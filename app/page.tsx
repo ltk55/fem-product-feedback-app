@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import Feedback from "@/components/feedback/feedback";
+import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import feedbackData from "@/data/feedbacks.json";
 
 export default function Home(): JSX.Element {
@@ -7,7 +7,7 @@ export default function Home(): JSX.Element {
     <main className="flex min-h-screen flex-col items-center bg-slate-50 align-middle">
       {feedbackData ? (
         feedbackData.map((data, key) => (
-          <Feedback
+          <SuggestionCard
             key={key}
             title={data.title}
             description={data.description}
