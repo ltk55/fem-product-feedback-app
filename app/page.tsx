@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import Feedback from "@/components/feedback/feedback";
 import feedbackData from "@/data/feedbacks.json";
 
 export default function Home(): JSX.Element {
   return (
-    <main className="flex min-h-screen items-center flex-col align-middle bg-slate-50">
+    <main className="flex min-h-screen flex-col items-center bg-slate-50 align-middle">
       {feedbackData ? (
-        feedbackData.map((data) => (
+        feedbackData.map((data, key) => (
           <Feedback
+            key={key}
             title={data.title}
             description={data.description}
             tags={data.tags}

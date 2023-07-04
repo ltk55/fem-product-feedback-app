@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface tagProps {
@@ -5,11 +6,11 @@ interface tagProps {
   className?: string;
 }
 
-export default function Tag({ tagName, className }: tagProps) {
+export default function Tag({ tagName, className }: tagProps): ReactNode {
   return (
     <div className={twMerge("inline-block", className)}>
-      <div className="h-[30px] bg-violet-50 rounded-lg flex items-center justify-center p-4">
-        <div className="text-indigo-600 text-[13px] font-semibold">
+      <div className="flex h-[30px] items-center justify-center rounded-lg bg-violet-50 p-4">
+        <div className="text-[13px] font-semibold text-indigo-600">
           {tagName}
         </div>
       </div>

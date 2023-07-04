@@ -1,5 +1,7 @@
-import Tag from "@/components/tag/tag";
 import Image from "next/image";
+import { type ReactNode } from "react";
+
+import Tag from "@/components/tag/tag";
 import iconArrowUp from "@/public/assets/icon-arrow-up.svg";
 import iconComment from "@/public/assets/icon-comments.svg";
 
@@ -17,26 +19,28 @@ export default function Feedback({
   tags,
   upvoteCount,
   commentCount,
-}: FeedBackProps) {
+}: FeedBackProps): ReactNode {
   return (
-    <div className="w-[327px] bg-white rounded-lg p-6 my-2">
-      <div className="w-[278px] text-slate-600 text-[13px] font-bold pb-[0.56rem]">
+    <div className="my-2 w-[327px] rounded-lg bg-white p-6">
+      <div className="w-[278px] pb-[0.56rem] text-[13px] font-bold text-slate-600">
         {title}
       </div>
-      <div className="w-[278px] text-slate-500 text-[13px] font-normal pb-2">
+      <div className="w-[278px] pb-2 text-[13px] font-normal text-slate-500">
         {description}
       </div>
-      {tags && tags.map((tag) => <Tag tagName={tag} className="pb-4" />)}
+      {tags?.map((tag, key) => (
+        <Tag key={key} tagName={tag} className="pb-4" />
+      ))}
       <div className="flex justify-between">
-        <div className="w-[69px] h-8 bg-violet-50 rounded-lg flex justify-between items-center pl-4 pr-[0.81rem]">
+        <div className="flex h-8 w-[69px] items-center justify-between rounded-lg bg-violet-50 pl-4 pr-[0.81rem]">
           <Image priority src={iconArrowUp} alt="upvote" />
-          <div className="text-center text-slate-600 text-[13px] font-bold">
+          <div className="text-center text-[13px] font-bold text-slate-600">
             {upvoteCount}
           </div>
         </div>
-        <div className="flex justify-between items-center gap-1">
+        <div className="flex items-center justify-between gap-1">
           <Image priority src={iconComment} alt="comment" />
-          <div className="w-[18px] text-center text-slate-600 text-[13px] font-bold">
+          <div className="w-[18px] text-center text-[13px] font-bold text-slate-600">
             {commentCount}
           </div>
         </div>

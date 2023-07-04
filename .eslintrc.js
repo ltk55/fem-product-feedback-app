@@ -6,10 +6,9 @@ module.exports = {
   extends: [
     "standard-with-typescript",
     "plugin:react/recommended",
-    "next",
     "next/core-web-vitals",
-    "plugin:prettier/recommended",
-    "next/core-web-vitals",
+    "prettier",
+    "plugin:tailwindcss/recommended",
   ],
   overrides: [
     {
@@ -25,8 +24,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    project: "./tsconfig.json",
+    project: ["./tsconfig.json"],
   },
-  plugins: ["react", "prettier"],
-  rules: {},
+  plugins: ["react", "simple-import-sort", "tailwindcss"],
+  rules: {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+  },
 };
