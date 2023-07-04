@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
-import feedbackData from "@/data/feedbacks.json";
+import data from "@/data/data.json";
 
 export default function Home(): JSX.Element {
   return (
     <main className="flex min-h-screen flex-col items-center bg-slate-50 align-middle">
-      {feedbackData ? (
-        feedbackData.map((data, key) => (
+      {data ? (
+        data.productRequests.map((req) => (
           <SuggestionCard
-            key={key}
-            title={data.title}
-            description={data.description}
-            tags={data.tags}
-            upvoteCount={data.upvoteCount}
-            commentCount={data.commentCount}
+            key={req.id}
+            title={req.title}
+            description={req.description}
+            category={req.category}
+            upvoteCount={req.upvotes}
+            commentCount={req.comments?.length ?? 0}
           />
         ))
       ) : (

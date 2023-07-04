@@ -4,7 +4,7 @@ import Image from "next/image";
 import { type ReactNode } from "react";
 import { useWindowSize } from "react-use";
 
-import Tag from "@/components/Tag/Tag";
+import CategoryTag from "@/components/CategoryTag/CategoryTag";
 import iconComment from "@/public/assets/icon-comments.svg";
 
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
@@ -12,7 +12,7 @@ import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 interface SuggestionCardProps {
   title: string;
   description: string;
-  tags?: string[];
+  category: string;
   upvoteCount: number;
   commentCount: number;
 }
@@ -20,7 +20,7 @@ interface SuggestionCardProps {
 export default function SuggestionCard({
   title,
   description,
-  tags,
+  category,
   upvoteCount,
   commentCount,
 }: SuggestionCardProps): ReactNode {
@@ -38,9 +38,7 @@ export default function SuggestionCard({
           {description}
         </p>
         <div className="pb-4 ">
-          {tags?.map((tag, key) => (
-            <Tag key={key} tagName={tag} />
-          ))}
+          <CategoryTag categoryName={category} />
         </div>
       </div>
       <div className="flex justify-between">
