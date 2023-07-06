@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { type ReactNode } from "react";
 import { useWindowSize } from "react-use";
 
+import iconComment from "@/assets/shared/icon-comments.svg";
 import CategoryTag from "@/components/CategoryTag/CategoryTag";
-import iconComment from "@/public/assets/icon-comments.svg";
 
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 
@@ -23,7 +22,7 @@ export default function SuggestionCard({
   category,
   upvoteCount,
   commentCount,
-}: SuggestionCardProps): ReactNode {
+}: SuggestionCardProps): React.ReactNode {
   const { width } = useWindowSize();
 
   return (
