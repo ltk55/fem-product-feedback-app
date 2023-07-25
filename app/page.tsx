@@ -23,9 +23,8 @@ export default function Home(): JSX.Element {
         return bComments - aComments;
       case "leastComments":
         return aComments - bComments;
-
       default:
-        return data.productRequests;
+        return 0;
     }
   });
 
