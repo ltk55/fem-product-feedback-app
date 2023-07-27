@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-import Header from "@/components/Header/Header";
+import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWithAdd";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import data from "@/data/data.json";
 
@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
 
   return (
     <>
-      <Header
+      <SortableListWithAdd
         suggestionCount={sortedSuggestions.length}
         sortBy={sortBy}
         setSortBy={setSortBy}

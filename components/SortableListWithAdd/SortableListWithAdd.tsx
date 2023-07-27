@@ -5,18 +5,18 @@ import { useWindowSize } from "react-use";
 
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
-interface HeaderProps {
+interface SortableListWithAddProps {
   suggestionCount: number;
   sortBy: string;
   setSortBy: (sortOption: string) => void;
   handleSort?: (sortOption: string) => void;
 }
 
-export default function Header({
+export default function SortableListWithAdd({
   suggestionCount,
   sortBy,
   setSortBy,
-}: HeaderProps): React.ReactNode {
+}: SortableListWithAddProps): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { width } = useWindowSize();
