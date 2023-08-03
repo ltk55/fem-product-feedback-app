@@ -33,13 +33,13 @@ export default function DropDownMenu({
   return (
     <div className="flex flex-col">
       <div
-        className="flex max-h-72 w-full cursor-pointer items-baseline gap-4 rounded-lg px-6 py-[18px] text-lg leading-8"
+        className="flex max-h-72 w-full cursor-pointer items-baseline rounded-lg px-6 py-[18px] text-lg leading-8"
         onClick={onClick}
       >
-        <span className="text-[13px] font-normal text-violet-50">
+        <span className="mr-2 text-[13px] font-normal text-violet-50">
           Sort by :
         </span>
-        <span className="text-[13px] font-bold text-violet-50">
+        <span className="mr-2 text-[13px] font-bold text-violet-50">
           {getLabelByValue(currentSelection)}
         </span>
         <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">

@@ -22,7 +22,7 @@ export default function SortableListWithAdd({
   const { width } = useWindowSize();
 
   return (
-    <div className="flex h-[72px] items-center bg-slate-700 p-4  md:rounded-lg">
+    <div className="flex h-14 w-full items-center bg-slate-700 md:h-[72px] md:rounded-lg md:p-4">
       {width >= 768 && (
         <h2 className="text-[18px] font-bold text-white">
           {suggestionCount} Suggestions

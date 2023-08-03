@@ -8,9 +8,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "background-header-desktop":
+          "url('/img/suggestions/desktop/background-header.png')",
+        "background-header-mobile":
+          "url('/img/suggestions/mobile/background-header.png')",
+        "background-header-tablet":
+          "url('/img/suggestions/tablet/background-header.png')",
       },
     },
   },

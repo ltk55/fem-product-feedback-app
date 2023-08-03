@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 
+import Header from "@/components/Header/Header";
 import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWithAdd";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import data from "@/data/data.json";
@@ -29,13 +30,15 @@ export default function Home(): JSX.Element {
   });
 
   return (
-    <>
-      <SortableListWithAdd
-        suggestionCount={sortedSuggestions.length}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
-      <main className="flex min-h-screen flex-col items-center bg-slate-50 align-middle">
+    <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 lg:flex-row lg:gap-[30px]">
+      <Header />
+
+      <main className="flex min-h-screen flex-col items-center align-middle">
+        <SortableListWithAdd
+          suggestionCount={sortedSuggestions.length}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
         {sortedSuggestions ? (
           sortedSuggestions.map((sugg) => (
             <SuggestionCard
@@ -51,6 +54,6 @@ export default function Home(): JSX.Element {
           <div>There is no feedback yet.</div>
         )}
       </main>
-    </>
+    </div>
   );
 }

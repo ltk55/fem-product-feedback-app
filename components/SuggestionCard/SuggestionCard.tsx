@@ -26,7 +26,7 @@ export default function SuggestionCard({
   const { width } = useWindowSize();
 
   return (
-    <div className="my-6 flex w-[calc(100%-40px)] flex-col rounded-lg bg-white p-6 md:flex-row md:justify-between">
+    <div className="my-6 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
       {width >= 768 && <UpvoteBtn upvoteCount={upvoteCount} />}
 
       <div className="w-full md:pl-10">
