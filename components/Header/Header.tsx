@@ -1,5 +1,7 @@
 "use client";
 
+import CategoryFilter from "@/components/CategoryFilter/CategoryFilter";
+
 export default function Header(): React.ReactNode {
   return (
     <header className="flex justify-between gap-5 lg:flex-col lg:justify-start">
@@ -10,12 +12,10 @@ export default function Header(): React.ReactNode {
         </p>
       </div>
 
-      <div className="hidden h-[178px] w-[223px] rounded-[10px] bg-white md:block lg:h-[137px] lg:w-[255px]">
-        Category Tag
-      </div>
-      <div className="hidden h-[178px] w-[223px] rounded-[10px] bg-white md:block lg:h-[137px] lg:w-[255px]">
+      <CategoryFilter />
+      {/* <div className="hidden h-[178px] w-[223px] rounded-[10px] bg-white md:block lg:h-[137px] lg:w-[255px]">
         Raodmap
-      </div>
+      </div> */}
     </header>
   );
 }
