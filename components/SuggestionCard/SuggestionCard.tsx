@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useWindowSize } from "react-use";
 
-import iconComment from "@/assets/shared/icon-comments.svg";
 import CategoryTag from "@/components/CategoryTag/CategoryTag";
+import iconComment from "@/public/img/shared/icon-comments.svg";
 
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 

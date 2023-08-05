@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
 
-import iconArrowUp from "@/assets/shared/icon-arrow-up.svg";
+import iconArrowUp from "@/public/img/shared/icon-arrow-up.svg";
 
 export default function UpvoteBtn({
   upvoteCount,
