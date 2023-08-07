@@ -27,7 +27,7 @@ export default function SuggestionCard({
 
   return (
     <div className="my-6 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
-      {width >= 768 && <UpvoteBtn upvoteCount={upvoteCount} />}
+      {width >= 768 && <UpvoteBtn upvote={upvoteCount} />}
 
       <div className="w-full md:pl-10">
         <h3 className="pb-[0.56rem] text-[13px] font-bold text-slate-600">
@@ -41,7 +41,7 @@ export default function SuggestionCard({
         </div>
       </div>
       <div className="flex justify-between">
-        {width < 768 && <UpvoteBtn upvoteCount={upvoteCount} />}
+        {width < 768 && <UpvoteBtn upvote={upvoteCount} />}
 
         <button className="flex items-center gap-1">
           <Image priority src={iconComment} alt="comment" />

@@ -1,19 +1,39 @@
-import Image from "next/image";
-import { type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-import iconArrowUp from "@/public/img/shared/icon-arrow-up.svg";
+export default function UpvoteBtn({ upvote }: { upvote: number }): ReactNode {
+  const [upvoteCount, setUpvoteCount] = useState(upvote);
+  const [upvoteActive, setUpvoteActive] = useState(false);
 
-export default function UpvoteBtn({
-  upvoteCount,
-}: {
-  upvoteCount: number;
-}): ReactNode {
+  function upvoteButtonHandler(): void {
+    if (upvoteActive) {
+      setUpvoteCount((prev) => prev - 1);
+    } else {
+      setUpvoteCount((prev) => prev + 1);
+    }
+    setUpvoteActive((prev) => !prev);
+  }
+
   return (
-    <button className="col-start-1 col-end-1 flex h-8 w-[69px] items-center justify-center gap-[0.62rem] rounded-lg bg-violet-50 pl-4 pr-[0.81rem] md:row-start-1 md:row-end-2 md:h-[53px] md:w-10 md:flex-col md:gap-1">
-      <Image src={iconArrowUp} alt="upvote" />
-      <div className="text-center text-[13px] font-bold text-slate-600">
-        {upvoteCount}
-      </div>
+    <button
+      onClick={upvoteButtonHandler}
+      className={twMerge(
+        upvoteActive
+          ? "bg-indigo-600 text-white"
+          : "bg-violet-50 text-slate-600",
+        "flex h-8 w-[69px] items-center justify-center gap-1 rounded-lg pl-4 pr-[0.81rem] hover:bg-indigo-200 md:h-[53px] md:w-10 md:flex-col md:gap-1.5",
+      )}
+    >
+      <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M1 6l4-4 4 4"
+          stroke={upvoteActive ? "#FFF" : "#4661E6"}
+          stroke-width="2"
+          fill="none"
+          fill-rule="evenodd"
+        />
+      </svg>
+      <div className="text-center text-[13px] font-bold">{upvoteCount}</div>
     </button>
   );
 }
