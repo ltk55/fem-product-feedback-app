@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 "use client";
 
 import { useState } from "react";
 
 import Header from "@/components/Header/Header";
+import NoFeedbackMessage from "@/components/NoFeedbackMessage/NoFeedbackMessage";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWithAdd";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
@@ -39,10 +39,6 @@ export default function Home(): JSX.Element {
       }
     });
 
-  // const handleSidebarToggle = () => {
-  //   setIsSidebarOpen(!isSidebarOpen);
-  // };
-
   return (
     <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 lg:flex-row lg:gap-[30px]">
       <Header />
@@ -55,7 +51,7 @@ export default function Home(): JSX.Element {
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
-        {sortedSuggestions ? (
+        {sortedSuggestions.length > 0 ? (
           sortedSuggestions.map((sugg) => (
             <SuggestionCard
               key={sugg.id}
@@ -67,7 +63,7 @@ export default function Home(): JSX.Element {
             />
           ))
         ) : (
-          <div>There is no feedback yet.</div>
+          <NoFeedbackMessage />
         )}
       </main>
     </div>
