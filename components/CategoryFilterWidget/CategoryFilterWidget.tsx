@@ -2,7 +2,7 @@ import useStore from "@/lib/store";
 
 import CategoryTag from "../CategoryTag/CategoryTag";
 
-export default function CategoryFilter(): React.ReactNode {
+export default function CategoryFilterWidget(): React.ReactNode {
   const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   const setSelectedCategory = useStore((state) => state.setSelectedCategory);

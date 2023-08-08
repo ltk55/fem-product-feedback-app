@@ -2,7 +2,7 @@
 
 import useStore from "@/lib/store";
 
-import CategoryFilter from "../CategoryFilter/CategoryFilter";
+import CategoryFilterWidget from "../CategoryFilterWidget/CategoryFilterWidget";
 
 export default function Sidebar(): React.ReactNode {
   const isSidebarOpen = useStore((state) => state.isSidebarOpen);
@@ -16,7 +16,7 @@ export default function Sidebar(): React.ReactNode {
       }`}
     >
       <div className="absolute right-0 top-0 h-full w-[271px] bg-[#f7f8fd] p-6 shadow-md">
-        <CategoryFilter />
+        <CategoryFilterWidget />
       </div>
     </div>
   );

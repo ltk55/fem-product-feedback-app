@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 
-import CategoryFilter from "@/components/CategoryFilter/CategoryFilter";
+import CategoryFilterWidget from "@/components/CategoryFilterWidget/CategoryFilterWidget";
 import useStore from "@/lib/store";
 import iconClose from "@/public/img/shared/mobile/icon-close.svg";
 import iconHamburger from "@/public/img/shared/mobile/icon-hamburger.svg";
@@ -46,11 +46,8 @@ export default function Header(): React.ReactNode {
       </div>
 
       <div className="hidden md:block">
-        <CategoryFilter />
+        <CategoryFilterWidget />
       </div>
-      {/* <div className="hidden h-[178px] w-[223px] rounded-[10px] bg-white md:block lg:h-[137px] lg:w-[255px]">
-        Raodmap
-      </div> */}
     </header>
   );
 }
