@@ -3,26 +3,40 @@ interface SortOption {
   label: string;
 }
 
+interface User {
+  image: string;
+  name: string;
+  username: string;
+}
+
+interface Reply {
+  content: string;
+  replyingTo: string;
+  user: User;
+}
+
 interface Comment {
   id: number;
   content: string;
-  user: {
-    name: string;
-    avatar: string;
-  };
+  user: User;
+  replies?: Reply[];
 }
 
-interface Suggestion {
+type Status = "suggestion" | "planned" | "in-progress" | "live";
+
+interface ProductRequest {
   id: number;
   title: string;
-  description: string;
   category: string;
   upvotes: number;
+  status: Status;
+  description: string;
   comments?: Comment[];
 }
 
 interface Data {
-  productRequests: Suggestion[];
+  currentUser: User;
+  productRequests: ProductRequest[];
 }
 
-export type { Data, SortOption };
+export type { Data, SortOption, Status };

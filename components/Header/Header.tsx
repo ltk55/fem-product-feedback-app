@@ -8,6 +8,8 @@ import useStore from "@/lib/store";
 import iconClose from "@/public/img/shared/mobile/icon-close.svg";
 import iconHamburger from "@/public/img/shared/mobile/icon-hamburger.svg";
 
+import RoadmapWidget from "../RoadmapWidget/RoadmapWidget";
+
 export default function Header(): React.ReactNode {
   const [setIsSidebarOpen, isSidebarOpen] = useStore((state) => [
     state.setIsSidebarOpen,
@@ -45,8 +47,9 @@ export default function Header(): React.ReactNode {
         />
       </div>
 
-      <div className="hidden md:block">
+      <div className="hidden md:flex md:gap-6 lg:flex-col">
         <CategoryFilterWidget />
+        <RoadmapWidget />
       </div>
     </header>
   );
