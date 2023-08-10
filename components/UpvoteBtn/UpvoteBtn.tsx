@@ -28,9 +28,9 @@ export default function UpvoteBtn({ upvote }: { upvote: number }): ReactNode {
         <path
           d="M1 6l4-4 4 4"
           stroke={upvoteActive ? "#FFF" : "#4661E6"}
-          stroke-width="2"
+          strokeWidth="2"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         />
       </svg>
       <div className="text-center text-[13px] font-bold">{upvoteCount}</div>

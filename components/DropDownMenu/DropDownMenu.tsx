@@ -46,9 +46,9 @@ export default function DropDownMenu({
           <path
             d="M1 1l4 4 4-4"
             stroke="#fff"
-            stroke-width="2"
+            strokeWidth="2"
             fill="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           />
         </svg>
       </div>
