@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useWindowSize } from "react-use";
 
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
@@ -19,15 +18,11 @@ export default function SortableListWithAdd({
 }: SortableListWithAddProps): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { width } = useWindowSize();
-
   return (
     <div className="flex h-14 w-full min-w-[375px] items-center bg-slate-700 md:h-[72px] md:min-w-[689px] md:rounded-lg md:p-4">
-      {width >= 768 && (
-        <h2 className="text-[18px] font-bold text-white">
-          {suggestionCount} Suggestions
-        </h2>
-      )}
+      <h2 className="hidden text-[18px] font-bold text-white md:block">
+        {suggestionCount} Suggestions
+      </h2>
 
       <DropDownMenu
         onClick={() => {

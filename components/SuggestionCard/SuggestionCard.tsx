@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useWindowSize } from "react-use";
 
 import CategoryTag from "@/components/CategoryTag/CategoryTag";
 import iconComment from "@/public/img/shared/icon-comments.svg";
@@ -23,11 +22,11 @@ export default function SuggestionCard({
   upvoteCount,
   commentCount,
 }: SuggestionCardProps): React.ReactNode {
-  const { width } = useWindowSize();
-
   return (
     <div className="my-6 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
-      {width >= 768 && <UpvoteBtn upvote={upvoteCount} />}
+      <div className="hidden md:block">
+        <UpvoteBtn upvote={upvoteCount} />
+      </div>
 
       <div className="w-full md:pl-10">
         <h3 className="pb-[0.56rem] text-[13px] font-bold text-slate-600">
@@ -41,7 +40,9 @@ export default function SuggestionCard({
         </div>
       </div>
       <div className="flex justify-between">
-        {width < 768 && <UpvoteBtn upvote={upvoteCount} />}
+        <div className="md:hidden">
+          <UpvoteBtn upvote={upvoteCount} />
+        </div>
 
         <button className="flex items-center gap-1">
           <Image priority src={iconComment} alt="comment" />
