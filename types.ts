@@ -39,4 +39,4 @@ interface Data {
   productRequests: ProductRequest[];
 }
 
-export type { Data, SortOption, Status };
+export type { Data, ProductRequest, SortOption, Status };
