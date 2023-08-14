@@ -23,7 +23,7 @@ export default function SuggestionCard({
   commentCount,
 }: SuggestionCardProps): React.ReactNode {
   return (
-    <div className="my-6 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
+    <div className="my-3 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
       <div className="hidden md:block">
         <UpvoteBtn upvote={upvoteCount} />
       </div>

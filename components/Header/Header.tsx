@@ -40,7 +40,7 @@ export default function Header(): React.ReactNode {
         <Image
           src={iconClose}
           alt="close-icon"
-          className={isSidebarOpen ? "block" : "hidden"}
+          className={`md:hidden ${isSidebarOpen ? "block" : "hidden"}`}
           onClick={() => {
             setIsSidebarOpen(false);
           }}

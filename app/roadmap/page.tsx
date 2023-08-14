@@ -71,12 +71,12 @@ export default function Home(): JSX.Element {
         {Object.entries(statusCounts).map(([status, count]) => (
           <li
             key={status}
-            className={`flex items-center justify-between ${
-              selectedStatus === status ? "border-b-[2px]" : ""
+            className={`flex w-32 justify-around ${
+              selectedStatus === status ? "border-b-[2px] " : ""
             } ${getStatusBorderColor(selectedStatus)}`}
           >
             <button
-              className="text-center text-[13px] font-bold text-slate-600"
+              className="text-[13px] font-bold text-slate-600"
               onClick={() => {
                 setSelectedStatus(status as Status);
               }}
@@ -113,17 +113,19 @@ export default function Home(): JSX.Element {
         />
       </div>
 
-      {filteredData.map((request) => (
-        <RoadmapCard
-          key={request.id}
-          title={request.title}
-          description={request.description}
-          category={request.category}
-          upvoteCount={request.upvotes}
-          commentCount={request.comments?.length ?? 0}
-          status={request.status}
-        />
-      ))}
+      <div className="md:hidden">
+        {filteredData.map((request) => (
+          <RoadmapCard
+            key={request.id}
+            title={request.title}
+            description={request.description}
+            category={request.category}
+            upvoteCount={request.upvotes}
+            commentCount={request.comments?.length ?? 0}
+            status={request.status}
+          />
+        ))}
+      </div>
     </div>
   );
 }

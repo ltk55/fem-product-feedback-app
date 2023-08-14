@@ -5,6 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "border-orange-300",
+    "border-fuchsia-600",
+    "border-blue-400",
+    "bg-orange-300",
+    "bg-fuchsia-600",
+    "bg-blue-400",
+  ],
   theme: {
     extend: {
       backgroundImage: {
