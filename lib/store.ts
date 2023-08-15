@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
 import data from "@/data/data.json";
-import { type Data, type TrackedStatus } from "@/types";
+import { type Category, type Data, type TrackedStatus } from "@/types";
 
 interface Store {
-  selectedCategory: string;
-  setSelectedCategory: (selectedCategory: string) => void;
+  selectedCategory: Category;
+  setSelectedCategory: (selectedCategory: Category) => void;
   isSidebarOpen: boolean;
   setIsSidebarOpen: (isOpen: boolean) => void;
   localData: Data;
@@ -16,7 +16,7 @@ interface Store {
 const useStore = create<Store>()((set) => ({
   selectedCategory: "all",
   localData: data as Data,
-  setSelectedCategory: (selectedCategory: string) => {
+  setSelectedCategory: (selectedCategory: Category) => {
     set(() => ({ selectedCategory }));
   },
   isSidebarOpen: false,

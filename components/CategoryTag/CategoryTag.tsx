@@ -1,21 +1,21 @@
-import { type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-import useStore from "@/lib/store";
+import { capitalizeString } from "@/lib/utils";
+import { type Category } from "@/types";
 
 interface CategoryTagProps {
-  categoryName: string;
   className?: string;
+  categoryName: Category;
+  selectedCategory?: Category;
 }
 
 export default function CategoryTag({
-  categoryName,
   className,
-}: CategoryTagProps): ReactNode {
-  const selectedCategory = useStore((state) => state.selectedCategory);
-
+  categoryName,
+  selectedCategory,
+}: CategoryTagProps): JSX.Element {
   const activeTag =
-    selectedCategory.toLowerCase() === categoryName.toLowerCase();
+    selectedCategory?.toLowerCase() === categoryName.toLowerCase();
 
   return (
     <div className={twMerge("inline-block", className)}>
@@ -27,7 +27,9 @@ export default function CategoryTag({
           "flex h-[30px] items-center justify-center rounded-lg p-4 hover:bg-indigo-200",
         )}
       >
-        <div className="text-[13px] font-semibold ">{categoryName}</div>
+        <div className="text-[13px] font-semibold ">
+          {capitalizeString(categoryName)}
+        </div>
       </div>
     </div>
   );

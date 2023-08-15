@@ -40,8 +40,8 @@ function getStatusBorderColor(status: TrackedStatus): string {
   return statusColors[status];
 }
 
-function capitalizeStatus(status: TrackedStatus): string {
-  return status
+function capitalizeString(string: string): string {
+  return string
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
@@ -49,7 +49,7 @@ function capitalizeStatus(status: TrackedStatus): string {
 
 export {
   calculateStatusCounts,
-  capitalizeStatus,
+  capitalizeString,
   getStatusBgColor,
   getStatusBorderColor,
 };

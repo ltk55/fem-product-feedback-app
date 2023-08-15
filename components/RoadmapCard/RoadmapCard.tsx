@@ -3,16 +3,16 @@
 import Image from "next/image";
 
 import CategoryTag from "@/components/CategoryTag/CategoryTag";
-import { capitalizeStatus, getStatusBgColor } from "@/lib/utils";
+import { capitalizeString, getStatusBgColor } from "@/lib/utils";
 import iconComment from "@/public/img/shared/icon-comments.svg";
-import { type TrackedStatus } from "@/types";
+import { type Category, type TrackedStatus } from "@/types";
 
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 
 interface RoadmapCardProps {
   title: string;
   description: string;
-  category: string;
+  category: Category;
   upvoteCount: number;
   commentCount: number;
   status: TrackedStatus;
@@ -37,7 +37,7 @@ export default function RoadmapCard({
             )}`}
           />
           <div className=" inline-block text-xs font-normal text-slate-500 xl:text-base">
-            {capitalizeStatus(status)}
+            {capitalizeString(status)}
           </div>
         </div>
         <h3 className="mb-[9px] text-xs font-bold text-slate-600 xl:text-lg">

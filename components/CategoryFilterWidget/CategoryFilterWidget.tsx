@@ -1,11 +1,22 @@
 import useStore from "@/lib/store";
+import { type Category } from "@/types";
 
 import CategoryTag from "../CategoryTag/CategoryTag";
 
-export default function CategoryFilterWidget(): React.ReactNode {
-  const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
+export default function CategoryFilterWidget(): JSX.Element {
+  const categories: Category[] = [
+    "all",
+    "UI",
+    "UX",
+    "enhancement",
+    "bug",
+    "feature",
+  ];
 
-  const setSelectedCategory = useStore((state) => state.setSelectedCategory);
+  const [setSelectedCategory, selectedCategory] = useStore((state) => [
+    state.setSelectedCategory,
+    state.selectedCategory,
+  ]);
 
   return (
     <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 xl:h-[166px] xl:w-[255px]">
@@ -17,7 +28,10 @@ export default function CategoryFilterWidget(): React.ReactNode {
             setSelectedCategory(category);
           }}
         >
-          <CategoryTag categoryName={category} />
+          <CategoryTag
+            categoryName={category}
+            selectedCategory={selectedCategory}
+          />
         </div>
       ))}
     </div>

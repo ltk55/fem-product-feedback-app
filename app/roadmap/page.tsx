@@ -6,7 +6,7 @@ import RoadmapCard from "@/components/RoadmapCard/RoadmapCard";
 import useStore from "@/lib/store";
 import {
   calculateStatusCounts,
-  capitalizeStatus,
+  capitalizeString,
   getStatusBorderColor,
 } from "@/lib/utils";
 import { type ProductRequest, type TrackedStatus } from "@/types";
@@ -34,7 +34,7 @@ function StatusColumnHeader({
         selectedStatus === status ? "block" : "hidden"
       } md:block`}
     >
-      <div className="mb-1 text-lg font-bold text-slate-600">{`${capitalizeStatus(
+      <div className="mb-1 text-lg font-bold text-slate-600">{`${capitalizeString(
         status,
       )} (${statusCounts[status] ?? 0})`}</div>
       <div className="text-xs font-normal text-slate-500">{description}</div>
