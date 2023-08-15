@@ -1,15 +1,18 @@
-import { type Data, type Status } from "@/types";
+import { type Data, type TrackedStatus } from "@/types";
 
-function calculateStatusCounts(data: Data): Partial<Record<Status, number>> {
-  const statusCounts: Partial<Record<Status, number>> = {};
+function calculateStatusCounts(data: Data): Record<TrackedStatus, number> {
+  const statusCounts: Record<TrackedStatus, number> = {
+    planned: 0,
+    "in-progress": 0,
+    live: 0,
+  };
 
   data.productRequests.forEach((request) => {
     if (request.status !== "suggestion") {
       if (statusCounts[request.status] === undefined) {
         statusCounts[request.status] = 1;
       } else {
-        statusCounts[request.status] =
-          (statusCounts[request.status] as number) + 1;
+        statusCounts[request.status] = statusCounts[request.status] + 1;
       }
     }
   });
@@ -17,24 +20,36 @@ function calculateStatusCounts(data: Data): Partial<Record<Status, number>> {
   return statusCounts;
 }
 
-function getStatusBgColor(status: Status): string {
-  const statusColors: Partial<Record<Status, string>> = {
+function getStatusBgColor(status: TrackedStatus): string {
+  const statusColors: Record<TrackedStatus, string> = {
     planned: "bg-orange-300",
     "in-progress": "bg-fuchsia-600",
     live: "bg-blue-400",
   };
 
-  return (statusColors[status] as string) ?? statusColors.suggestion;
+  return statusColors[status];
 }
 
-function getStatusBorderColor(status: Status): string {
-  const statusColors: Partial<Record<Status, string>> = {
+function getStatusBorderColor(status: TrackedStatus): string {
+  const statusColors: Record<TrackedStatus, string> = {
     planned: "border-orange-300",
     "in-progress": "border-fuchsia-600",
     live: "border-blue-400",
   };
 
-  return (statusColors[status] as string) ?? statusColors.suggestion;
+  return statusColors[status];
 }
 
-export { calculateStatusCounts, getStatusBgColor, getStatusBorderColor };
+function capitalizeStatus(status: TrackedStatus): string {
+  return status
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export {
+  calculateStatusCounts,
+  capitalizeStatus,
+  getStatusBgColor,
+  getStatusBorderColor,
+};

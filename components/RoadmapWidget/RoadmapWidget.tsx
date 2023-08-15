@@ -10,7 +10,7 @@ export default function RoadmapWidget(): JSX.Element {
   const statusCounts = calculateStatusCounts(localData);
 
   return (
-    <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 lg:h-[166px] lg:w-[255px]">
+    <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 xl:h-[166px] xl:w-[255px]">
       <div className="mb-6 flex items-center justify-between">
         <h3 className="text-lg font-bold text-slate-600">Roadmap</h3>
         <Link

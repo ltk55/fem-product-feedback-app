@@ -4,33 +4,39 @@ import Link from "next/link";
 
 import RoadmapCard from "@/components/RoadmapCard/RoadmapCard";
 import useStore from "@/lib/store";
-import { calculateStatusCounts, getStatusBorderColor } from "@/lib/utils";
-import { type ProductRequest, type Status } from "@/types";
+import {
+  calculateStatusCounts,
+  capitalizeStatus,
+  getStatusBorderColor,
+} from "@/lib/utils";
+import { type ProductRequest, type TrackedStatus } from "@/types";
 
-interface StatusSectionProps {
-  selectedStatus: Status;
-  statusCounts: Partial<Record<Status, number>>;
-  status: Status;
-  label: string;
-  description: string;
+interface StatusColumnHeaderProps {
+  selectedStatus: TrackedStatus;
+  statusCounts: Record<TrackedStatus, number>;
+  status: TrackedStatus;
 }
 
-function StatusSection({
+function StatusColumnHeader({
   selectedStatus,
   statusCounts,
   status,
-  label,
-  description,
-}: StatusSectionProps): JSX.Element {
+}: StatusColumnHeaderProps): JSX.Element {
+  const description = {
+    planned: "Ideas prioritized for research",
+    "in-progress": "Currently being developed",
+    live: "Released features",
+  }[status];
+
   return (
     <div
-      className={`p-6 ${
+      className={`w-56 p-6 md:px-0 xl:w-[350px] ${
         selectedStatus === status ? "block" : "hidden"
       } md:block`}
     >
-      <div className="mb-1 text-lg font-bold text-slate-600">{`${label} (${
-        statusCounts[status] ?? 0
-      })`}</div>
+      <div className="mb-1 text-lg font-bold text-slate-600">{`${capitalizeStatus(
+        status,
+      )} (${statusCounts[status] ?? 0})`}</div>
       <div className="text-xs font-normal text-slate-500">{description}</div>
     </div>
   );
@@ -45,30 +51,33 @@ export default function Home(): JSX.Element {
 
   const statusCounts = calculateStatusCounts(localData);
 
-  const filteredData: ProductRequest[] = localData.productRequests.filter(
-    (request) => request.status === selectedStatus,
-  );
+  const statusKeys: TrackedStatus[] = ["planned", "in-progress", "live"];
+
+  const filterRequestsByStatus = (status: TrackedStatus): ProductRequest[] =>
+    localData.productRequests.filter((req) => req.status === status);
 
   return (
-    <div>
-      <div className="flex h-[100px] w-full flex-col justify-center bg-slate-700 pl-6">
+    <div className="flex flex-col md:items-center">
+      {/* Header */}
+      <div className="flex h-[100px] w-full flex-col justify-center bg-slate-700 pl-6 md:mx-10 md:mt-14 md:w-[689px] md:rounded-lg xl:w-[1110px]">
         <Link href="./" className="flex items-center gap-4">
           <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M6 9L2 5l4-4"
               stroke="#FFF"
-              stroke-width="2"
+              strokeWidth="2"
               fill="none"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             />
           </svg>
-          <span className="text-[13px] font-bold text-white">Go Back</span>
+          <span className="text-xs font-bold text-white">Go Back</span>
         </Link>
         <h2 className="text-lg font-bold text-white">Roadmap</h2>
       </div>
 
+      {/* Status Filter */}
       <ul className="flex h-[60px] justify-around border-b-[1px] border-slate-400/25 md:hidden">
-        {Object.entries(statusCounts).map(([status, count]) => (
+        {statusKeys.map((status) => (
           <li
             key={status}
             className={`flex w-32 justify-around ${
@@ -76,54 +85,52 @@ export default function Home(): JSX.Element {
             } ${getStatusBorderColor(selectedStatus)}`}
           >
             <button
-              className="text-[13px] font-bold text-slate-600"
+              className="text-xs font-bold text-slate-600"
               onClick={() => {
-                setSelectedStatus(status as Status);
+                setSelectedStatus(status);
               }}
             >
-              {`${status.charAt(0).toUpperCase() + status.slice(1)} (${count})`}
+              {`${status.charAt(0).toUpperCase() + status.slice(1)} (${
+                statusCounts[status] ?? 0
+              })`}
             </button>
           </li>
         ))}
       </ul>
 
-      <div className="justify-around md:flex">
-        <StatusSection
-          selectedStatus={selectedStatus}
-          statusCounts={statusCounts}
-          status="planned"
-          label="Planned"
-          description="Ideas prioritized for research"
-        />
-
-        <StatusSection
-          selectedStatus={selectedStatus}
-          statusCounts={statusCounts}
-          status="in-progress"
-          label="In-Progress"
-          description="Currently being developed"
-        />
-
-        <StatusSection
-          selectedStatus={selectedStatus}
-          statusCounts={statusCounts}
-          status="live"
-          label="Live"
-          description="Released features"
-        />
+      {/* Status Column Header */}
+      <div className="md:flex md:justify-between md:gap-2.5 xl:gap-[30px]">
+        {statusKeys.map((status) => (
+          <StatusColumnHeader
+            key={status}
+            selectedStatus={selectedStatus}
+            statusCounts={statusCounts}
+            status={status}
+          />
+        ))}
       </div>
 
-      <div className="md:hidden">
-        {filteredData.map((request) => (
-          <RoadmapCard
-            key={request.id}
-            title={request.title}
-            description={request.description}
-            category={request.category}
-            upvoteCount={request.upvotes}
-            commentCount={request.comments?.length ?? 0}
-            status={request.status}
-          />
+      {/* Roadmap Card */}
+      <div className="flex justify-center md:justify-around md:gap-2.5 xl:gap-[30px]">
+        {statusKeys.map((status) => (
+          <div
+            key={status}
+            className={`${
+              selectedStatus === status ? "block" : "hidden"
+            } md:flex md:flex-col`}
+          >
+            {filterRequestsByStatus(status).map((request) => (
+              <RoadmapCard
+                key={request.id}
+                title={request.title}
+                description={request.description}
+                category={request.category}
+                upvoteCount={request.upvotes}
+                commentCount={request.comments?.length ?? 0}
+                status={request.status as TrackedStatus}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>

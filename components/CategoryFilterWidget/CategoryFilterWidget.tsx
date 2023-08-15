@@ -8,7 +8,7 @@ export default function CategoryFilterWidget(): React.ReactNode {
   const setSelectedCategory = useStore((state) => state.setSelectedCategory);
 
   return (
-    <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 lg:h-[166px] lg:w-[255px]">
+    <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 xl:h-[166px] xl:w-[255px]">
       {categories.map((category) => (
         <div
           className="mb-3.5 mr-2 inline-block cursor-pointer"

@@ -25,7 +25,7 @@ export default function SuggestionCard({
   return (
     <div className="my-3 flex w-[calc(100%-48px)] flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
       <div className="hidden md:block">
-        <UpvoteBtn upvote={upvoteCount} />
+        <UpvoteBtn upvote={upvoteCount} responsive />
       </div>
 
       <div className="w-full md:pl-10">

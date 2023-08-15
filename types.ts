@@ -24,6 +24,8 @@ interface Comment {
 
 type Status = "suggestion" | "planned" | "in-progress" | "live";
 
+type TrackedStatus = Exclude<Status, "suggestion">;
+
 interface ProductRequest {
   id: number;
   title: string;
@@ -39,4 +41,4 @@ interface Data {
   productRequests: ProductRequest[];
 }
 
-export type { Data, ProductRequest, SortOption, Status };
+export type { Data, ProductRequest, SortOption, Status, TrackedStatus };

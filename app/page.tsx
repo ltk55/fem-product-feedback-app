@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
     });
 
   return (
-    <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 lg:flex-row lg:gap-[30px]">
+    <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 xl:flex-row xl:gap-[30px]">
       <Header />
 
       <Sidebar />

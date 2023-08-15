@@ -10,7 +10,7 @@ export default function Sidebar(): React.ReactNode {
 
   return (
     <div
-      className={`fixed inset-0 z-50 mt-[72px] bg-black/50 transition-opacity lg:hidden ${
+      className={`fixed inset-0 z-50 mt-[72px] bg-black/50 transition-opacity xl:hidden ${
         isSidebarOpen
           ? "pointer-events-auto opacity-100"
           : "pointer-events-none opacity-0"

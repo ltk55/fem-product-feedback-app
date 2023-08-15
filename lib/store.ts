@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import data from "@/data/data.json";
-import { type Data, type Status } from "@/types";
+import { type Data, type TrackedStatus } from "@/types";
 
 interface Store {
   selectedCategory: string;
@@ -9,8 +9,8 @@ interface Store {
   isSidebarOpen: boolean;
   setIsSidebarOpen: (isOpen: boolean) => void;
   localData: Data;
-  selectedStatus: Status;
-  setSelectedStatus: (selectedStatus: Status) => void;
+  selectedStatus: TrackedStatus;
+  setSelectedStatus: (selectedStatus: TrackedStatus) => void;
 }
 
 const useStore = create<Store>()((set) => ({
@@ -24,7 +24,7 @@ const useStore = create<Store>()((set) => ({
     set({ isSidebarOpen: isOpen });
   },
   selectedStatus: "in-progress",
-  setSelectedStatus: (selectedStatus: Status) => {
+  setSelectedStatus: (selectedStatus: TrackedStatus) => {
     set(() => ({ selectedStatus }));
   },
 }));
