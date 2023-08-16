@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import useStore from "@/lib/store";
 import { calculateStatusCounts, getStatusBgColor } from "@/lib/utils";
-import { type Status } from "@/types";
+import { type TrackedStatus } from "@/types";
 
 export default function RoadmapWidget(): JSX.Element {
   const localData = useStore((state) => state.localData);
@@ -25,7 +25,7 @@ export default function RoadmapWidget(): JSX.Element {
           <li key={status} className="flex items-center justify-between">
             <div
               className={`mr-4 h-2 w-2 rounded-full ${getStatusBgColor(
-                status as Status,
+                status as TrackedStatus,
               )}`}
             />
             <div className="flex-1 text-base font-normal text-slate-500">

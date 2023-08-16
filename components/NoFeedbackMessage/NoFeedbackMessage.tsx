@@ -4,7 +4,7 @@ import illustrationEmpty from "@/public/img/suggestions/illustration-empty.svg";
 
 export default function NoFeedbackMessage(): React.ReactNode {
   return (
-    <div className="my-8 flex w-[calc(100%-48px)] flex-col items-center justify-center rounded-[10px] bg-white px-6 py-[76px] md:w-full md:py-[110px]">
+    <div className="my-8 flex flex-col items-center justify-center rounded-[10px] bg-white px-6 py-[76px] md:w-full md:py-[110px]">
       <Image src={illustrationEmpty} alt="illustration-empty" />
       <h2 className="pt-[39px] text-center text-lg font-bold text-slate-600">
         There is no feedback yet.

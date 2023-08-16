@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import Header from "@/components/Header/Header";
@@ -9,6 +10,7 @@ import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWi
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import data from "@/data/data.json";
 import useStore from "@/lib/store";
+import { type Category } from "@/types";
 
 export default function Home(): JSX.Element {
   const [sortBy, setSortBy] = useState<string>("mostUpvotes");
@@ -45,26 +47,31 @@ export default function Home(): JSX.Element {
 
       <Sidebar />
 
+      <Link href={`/feedback-detail/1`}>test</Link>
+
       <main className="flex min-h-screen flex-col items-center align-middle">
         <SortableListWithAdd
           suggestionCount={sortedSuggestions.length}
           sortBy={sortBy}
           setSortBy={setSortBy}
         />
-        {sortedSuggestions.length > 0 ? (
-          sortedSuggestions.map((sugg) => (
-            <SuggestionCard
-              key={sugg.id}
-              title={sugg.title}
-              description={sugg.description}
-              category={sugg.category}
-              upvoteCount={sugg.upvotes}
-              commentCount={sugg.comments?.length ?? 0}
-            />
-          ))
-        ) : (
-          <NoFeedbackMessage />
-        )}
+        <div className="mx-6 flex flex-col gap-4 py-8 md:w-full">
+          {sortedSuggestions.length > 0 ? (
+            sortedSuggestions.map((sugg) => (
+              <SuggestionCard
+                key={sugg.id}
+                id={sugg.id}
+                title={sugg.title}
+                description={sugg.description}
+                category={sugg.category as Category}
+                upvoteCount={sugg.upvotes}
+                commentCount={sugg.comments?.length ?? 0}
+              />
+            ))
+          ) : (
+            <NoFeedbackMessage />
+          )}
+        </div>
       </main>
     </div>
   );
