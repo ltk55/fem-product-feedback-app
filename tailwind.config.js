@@ -12,6 +12,8 @@ module.exports = {
     "bg-orange-300",
     "bg-fuchsia-600",
     "bg-blue-400",
+    "text-white",
+    "text-[#647196]",
   ],
   theme: {
     extend: {

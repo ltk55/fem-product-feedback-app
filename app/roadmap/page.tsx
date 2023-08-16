@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-
+import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import RoadmapCard from "@/components/RoadmapCard/RoadmapCard";
 import useStore from "@/lib/store";
 import {
@@ -60,18 +59,7 @@ export default function Home(): JSX.Element {
     <div className="flex flex-col md:items-center">
       {/* Header */}
       <div className="flex h-[100px] w-full flex-col justify-center bg-slate-700 pl-6 md:mx-10 md:mt-14 md:w-[689px] md:rounded-lg xl:w-[1110px]">
-        <Link href="./" className="flex items-center gap-4">
-          <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M6 9L2 5l4-4"
-              stroke="#FFF"
-              strokeWidth="2"
-              fill="none"
-              fillRule="evenodd"
-            />
-          </svg>
-          <span className="text-xs font-bold text-white">Go Back</span>
-        </Link>
+        <GoBackBtn colour="white" />
         <h2 className="text-lg font-bold text-white">Roadmap</h2>
       </div>
 
