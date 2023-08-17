@@ -45,6 +45,7 @@ interface Data {
 
 export type {
   Category,
+  Comment,
   Data,
   ProductRequest,
   SortOption,
