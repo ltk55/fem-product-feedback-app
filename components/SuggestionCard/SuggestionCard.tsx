@@ -42,10 +42,10 @@ export default function SuggestionCard({
           href={`./feedback-detail/${id}`}
           className={activeLink ? "" : "pointer-events-none"}
         >
-          <h3 className="pb-[0.56rem] text-[13px] font-bold text-slate-600">
+          <h3 className="pb-[0.56rem] text-xs font-bold text-slate-600 md:text-lg">
             {title}
           </h3>
-          <p className="pb-2 text-[13px] font-normal text-slate-500">
+          <p className="pb-2 text-xs font-normal text-slate-500 md:text-base">
             {description}
           </p>
         </Link>
@@ -58,12 +58,12 @@ export default function SuggestionCard({
           <UpvoteBtn upvote={upvoteCount} />
         </div>
 
-        <button className="flex items-center gap-1">
+        <div className="flex items-center gap-1">
           <Image priority src={iconComment} alt="comment" />
-          <div className="min-w-[18px] text-center text-[13px] font-bold text-slate-600">
+          <div className="min-w-[18px] text-center text-xs font-bold text-slate-600 md:text-base">
             {commentCount}
           </div>
-        </button>
+        </div>
       </div>
     </div>
   );

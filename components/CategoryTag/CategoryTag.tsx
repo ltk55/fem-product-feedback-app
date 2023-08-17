@@ -30,7 +30,7 @@ export default function CategoryTag({
           "flex h-[30px] items-center justify-center rounded-lg p-4",
         )}
       >
-        <div className="text-[13px] font-semibold">
+        <div className="text-xs font-semibold">
           {capitalizeString(categoryName)}
         </div>
       </div>
