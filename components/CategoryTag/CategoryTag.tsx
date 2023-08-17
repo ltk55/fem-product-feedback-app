@@ -7,12 +7,14 @@ interface CategoryTagProps {
   className?: string;
   categoryName: Category;
   selectedCategory?: Category;
+  hoverEffect?: boolean;
 }
 
 export default function CategoryTag({
   className,
   categoryName,
   selectedCategory,
+  hoverEffect,
 }: CategoryTagProps): JSX.Element {
   const activeTag =
     selectedCategory?.toLowerCase() === categoryName.toLowerCase();
@@ -24,7 +26,8 @@ export default function CategoryTag({
           activeTag
             ? "bg-indigo-600 text-white"
             : "bg-violet-50 text-indigo-600",
-          "flex h-[30px] items-center justify-center rounded-lg p-4 hover:bg-indigo-200",
+          hoverEffect === true ? "hover:bg-indigo-200" : "",
+          "flex h-[30px] items-center justify-center rounded-lg p-4",
         )}
       >
         <div className="text-[13px] font-semibold">

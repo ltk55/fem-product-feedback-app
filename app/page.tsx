@@ -47,8 +47,6 @@ export default function Home(): JSX.Element {
 
       <Sidebar />
 
-      <Link href={`/feedback-detail/1`}>test</Link>
-
       <main className="flex min-h-screen flex-col items-center align-middle">
         <SortableListWithAdd
           suggestionCount={sortedSuggestions.length}

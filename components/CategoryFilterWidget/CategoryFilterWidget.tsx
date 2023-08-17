@@ -31,6 +31,7 @@ export default function CategoryFilterWidget(): JSX.Element {
           <CategoryTag
             categoryName={category}
             selectedCategory={selectedCategory}
+            hoverEffect
           />
         </div>
       ))}
