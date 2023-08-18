@@ -17,11 +17,11 @@ export default function Header(): React.ReactNode {
   ]);
 
   return (
-    <header className="flex justify-between gap-5 xl:flex-col xl:justify-start">
+    <header className="flex justify-start gap-6 xl:flex-col">
       <div className="flex h-[72px] w-full items-center justify-between bg-background-header-mobile bg-repeat-round px-6 text-white md:h-[178px] md:w-[223px] md:items-end md:rounded-[10px] md:bg-background-header-tablet md:pb-6 xl:h-[137px] xl:w-[255px] xl:bg-background-header-desktop">
         <div>
-          <h1 className="text-[15px] font-bold md:text-xl">Frontend Mentor</h1>
-          <p className="text-[13px] font-medium opacity-75 md:text-[15px]">
+          <h1 className="text-base font-bold md:text-xl">Frontend Mentor</h1>
+          <p className="text-xs font-medium opacity-75 md:text-base">
             Feedback Board
           </p>
         </div>
