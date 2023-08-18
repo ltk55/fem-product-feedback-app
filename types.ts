@@ -51,4 +51,5 @@ export type {
   SortOption,
   Status,
   TrackedStatus,
+  User,
 };

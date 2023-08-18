@@ -39,19 +39,35 @@ export default function Page({ params: { id } }: PageProps): JSX.Element {
                 : ""}
             </div>
 
-            {feedback.comments?.map((comment, index) => (
-              <CommentBlock
-                key={index}
-                comment={comment}
-                className={
-                  "border-b " +
-                  (feedback.comments != null &&
-                  index === feedback.comments.length - 1
-                    ? "border-b-0"
-                    : "")
-                }
-              />
-            ))}
+            {feedback.comments?.map((comment, index) => {
+              return (
+                <div key={index}>
+                  {/* Comment */}
+                  <CommentBlock
+                    className={
+                      "border-b " +
+                      (feedback.comments != null &&
+                      index === feedback.comments.length - 1
+                        ? "border-b-0"
+                        : "")
+                    }
+                    content={comment.content}
+                    user={comment.user}
+                  />
+
+                  {/* Replies */}
+                  {comment.replies?.map((reply, key) => (
+                    <CommentBlock
+                      className="border-l-[1px] border-slate-500/10 pl-6 md:ml-5"
+                      key={key}
+                      content={reply.content}
+                      user={reply.user}
+                      replyingTo={reply.replyingTo}
+                    />
+                  ))}
+                </div>
+              );
+            })}
           </div>
         </>
       )}
