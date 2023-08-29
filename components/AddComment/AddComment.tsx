@@ -4,6 +4,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
+import Button from "@/components/Button/Button";
 import useStore from "@/lib/store";
 import { type Comment } from "@/types";
 
@@ -84,9 +85,10 @@ export default function AddComment({
         <div className="text-xs font-normal text-slate-500 md:text-base">
           {maxCommentLength - commentLength} Characters left
         </div>
-        <button className="h-11 w-36 rounded-lg bg-fuchsia-600 text-sm font-bold text-violet-50">
+        {/* <button className="h-11 w-36 rounded-lg bg-fuchsia-600 text-sm font-bold text-violet-50">
           Post Comment
-        </button>
+        </button> */}
+        <Button label="Post Comment" colour="fuchsia" />
       </div>
     </form>
   );
