@@ -5,9 +5,9 @@ import { calculateStatusCounts, getStatusBgColor } from "@/lib/utils";
 import { type TrackedStatus } from "@/types";
 
 export default function RoadmapWidget(): JSX.Element {
-  const localData = useStore((state) => state.localData);
+  const productRequests = useStore((state) => state.productRequests);
 
-  const statusCounts = calculateStatusCounts(localData);
+  const statusCounts = calculateStatusCounts(productRequests);
 
   return (
     <div className="h-[178px] w-[223px] rounded-[10px] bg-white p-6 xl:h-[166px] xl:w-[255px]">

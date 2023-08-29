@@ -38,7 +38,7 @@ export default function CommentBlock({
           <small className="text-xs font-normal text-slate-500 md:text-sm">
             @{user.username}
           </small>
-          <p className="mt-4 hidden self-start text-xs font-normal text-slate-500 md:block md:text-base">
+          <p className="mt-4 hidden self-start break-all text-xs font-normal text-slate-500 md:block md:text-base">
             {replyingTo != null && (
               <span className="text-xs font-bold text-fuchsia-600 md:text-base">
                 @{replyingTo}{" "}
@@ -50,7 +50,7 @@ export default function CommentBlock({
 
         <button className="text-xs font-semibold text-indigo-600">Reply</button>
       </div>
-      <p className="mt-4 self-start text-xs font-normal text-slate-500 md:hidden md:text-base">
+      <p className="mt-4 self-start break-all text-xs font-normal text-slate-500 md:hidden md:text-base">
         {replyingTo != null && (
           <span className="text-xs font-bold text-fuchsia-600 md:text-base">
             @{replyingTo}{" "}

@@ -42,18 +42,20 @@ function StatusColumnHeader({
 }
 
 export default function Home(): JSX.Element {
-  const [localData, selectedStatus, setSelectedStatus] = useStore((state) => [
-    state.localData,
-    state.selectedStatus,
-    state.setSelectedStatus,
-  ]);
+  const [productRequests, selectedStatus, setSelectedStatus] = useStore(
+    (state) => [
+      state.productRequests,
+      state.selectedStatus,
+      state.setSelectedStatus,
+    ],
+  );
 
-  const statusCounts = calculateStatusCounts(localData);
+  const statusCounts = calculateStatusCounts(productRequests);
 
   const statusKeys: TrackedStatus[] = ["planned", "in-progress", "live"];
 
   const filterRequestsByStatus = (status: TrackedStatus): ProductRequest[] =>
-    localData.productRequests.filter((req) => req.status === status);
+    productRequests.filter((req) => req.status === status);
 
   return (
     <div className="flex flex-col md:items-center">

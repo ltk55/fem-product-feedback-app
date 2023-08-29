@@ -1,5 +1,6 @@
 "use client";
 
+import AddComment from "@/components/AddComment/AddComment";
 import CommentBlock from "@/components/CommentBlock/CommentBlock";
 import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
@@ -10,14 +11,12 @@ interface PageProps {
 }
 
 export default function Page({ params: { id } }: PageProps): JSX.Element {
-  const localData = useStore((state) => state.localData);
+  const [productRequests] = useStore((state) => [state.productRequests]);
 
-  const feedback = localData.productRequests.find(
-    (req) => req.id === Number(id),
-  );
+  const feedback = productRequests.find((req) => req.id === Number(id));
 
   return (
-    <div className="m-6 flex flex-col gap-6">
+    <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
       <div className="flex h-10 items-center">
         <GoBackBtn colour="blue" />
       </div>
@@ -32,17 +31,17 @@ export default function Page({ params: { id } }: PageProps): JSX.Element {
             commentCount={feedback.comments?.length ?? 0}
           />
           <div className="flex flex-col rounded-lg bg-white p-6">
-            <div className="text-lg font-bold text-slate-600">
+            <h4 className="text-lg font-bold text-slate-600">
               {feedback.comments?.length} comment
               {feedback.comments != null && feedback.comments.length > 1
                 ? "s"
                 : ""}
-            </div>
+            </h4>
 
             {feedback.comments?.map((comment, index) => {
               return (
                 <div key={index}>
-                  {/* Comment */}
+                  {/* Comments */}
                   <CommentBlock
                     className={
                       "border-b " +
@@ -71,6 +70,8 @@ export default function Page({ params: { id } }: PageProps): JSX.Element {
           </div>
         </>
       )}
+
+      <AddComment feedbackId={id} />
     </div>
   );
 }

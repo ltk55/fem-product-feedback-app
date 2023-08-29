@@ -1,13 +1,15 @@
-import { type Data, type TrackedStatus } from "@/types";
+import { type ProductRequest, type TrackedStatus } from "@/types";
 
-function calculateStatusCounts(data: Data): Record<TrackedStatus, number> {
+function calculateStatusCounts(
+  productRequests: ProductRequest[],
+): Record<TrackedStatus, number> {
   const statusCounts: Record<TrackedStatus, number> = {
     planned: 0,
     "in-progress": 0,
     live: 0,
   };
 
-  data.productRequests.forEach((request) => {
+  productRequests.forEach((request) => {
     if (request.status !== "suggestion") {
       if (statusCounts[request.status] === undefined) {
         statusCounts[request.status] = 1;
