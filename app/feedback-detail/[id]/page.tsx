@@ -10,7 +10,9 @@ interface PageProps {
   params: { id: string };
 }
 
-export default function Page({ params: { id } }: PageProps): JSX.Element {
+export default function FeedbackDetailPage({
+  params: { id },
+}: PageProps): JSX.Element {
   const [productRequests] = useStore((state) => [state.productRequests]);
 
   const feedback = productRequests.find((req) => req.id === Number(id));

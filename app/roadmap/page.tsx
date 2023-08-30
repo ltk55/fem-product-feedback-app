@@ -41,7 +41,7 @@ function StatusColumnHeader({
   );
 }
 
-export default function Home(): JSX.Element {
+export default function RoadmapPage(): JSX.Element {
   const [productRequests, selectedStatus, setSelectedStatus] = useStore(
     (state) => [
       state.productRequests,
