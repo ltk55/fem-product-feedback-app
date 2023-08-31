@@ -85,9 +85,7 @@ export default function AddComment({
         <div className="text-xs font-normal text-slate-500 md:text-base">
           {maxCommentLength - commentLength} Characters left
         </div>
-        {/* <button className="h-11 w-36 rounded-lg bg-fuchsia-600 text-sm font-bold text-violet-50">
-          Post Comment
-        </button> */}
+
         <Button label="Post Comment" colour="fuchsia" />
       </div>
     </form>
