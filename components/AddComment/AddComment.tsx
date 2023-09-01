@@ -1,10 +1,11 @@
 "use client";
 
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { type SubmitHandler, useForm } from "react-hook-form";
+import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
 import Button from "@/components/Button/Button";
+import TextArea from "@/components/FormElements/TextArea";
 import useStore from "@/lib/store";
 import { type Comment } from "@/types";
 
@@ -26,7 +27,7 @@ export default function AddComment({
   );
 
   const {
-    register,
+    control,
     handleSubmit,
     watch,
     reset,
@@ -66,21 +67,22 @@ export default function AddComment({
       onSubmit={handleSubmit(onSubmit)}
     >
       <h4 className="mb-6 text-lg font-bold text-slate-600">Add Comment</h4>
-      <textarea
-        placeholder="Type your comment here"
-        maxLength={maxCommentLength}
-        className={`mb-4 h-20 w-full resize-none rounded bg-slate-50 p-6 text-xs font-normal focus:outline-indigo-600 ${
-          errors.comment != null
-            ? "focus:outline-red-600"
-            : "focus:outline-indigo-600"
-        }`}
-        {...register("comment", { required: true })}
+      <Controller
+        name="comment"
+        control={control}
+        rules={{
+          required: "Can't be empty",
+        }}
+        render={({ field: { onChange, value, onBlur } }) => (
+          <TextArea
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            errorMessage={errors.comment?.message}
+            maxLength={250}
+          />
+        )}
       />
-      {Boolean(errors.comment) && (
-        <span className="text-sm font-normal text-red-600">
-          Can&apos;t be empty
-        </span>
-      )}
       <div className="flex items-center justify-between">
         <div className="text-xs font-normal text-slate-500 md:text-base">
           {maxCommentLength - commentLength} Characters left
