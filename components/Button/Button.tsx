@@ -3,10 +3,14 @@ import { twMerge } from "tailwind-merge";
 export default function Button({
   colour,
   label,
+  type,
+  onClick,
   className,
 }: {
   colour: "fuchsia" | "indigo" | "slate" | "red";
   label: string;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
   className?: string;
 }): JSX.Element {
   const colorMap = {
@@ -20,6 +24,8 @@ export default function Button({
 
   return (
     <button
+      type={type}
+      onClick={onClick}
       className={twMerge(
         "h-11 rounded-lg px-6 text-sm font-bold text-violet-50",
         bgColorClass,
