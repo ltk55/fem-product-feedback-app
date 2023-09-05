@@ -15,7 +15,7 @@ export default function FeedbackDetailPage({
 }: PageProps): JSX.Element {
   const [productRequests] = useStore((state) => [state.productRequests]);
 
-  const feedback = productRequests.find((req) => req.id === Number(id));
+  const feedback = productRequests.find((req) => req.id.toString() === id);
 
   return (
     <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">

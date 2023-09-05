@@ -27,7 +27,7 @@ export default function Button({
       type={type}
       onClick={onClick}
       className={twMerge(
-        "h-11 rounded-lg px-6 text-sm font-bold text-violet-50",
+        "h-11 rounded-lg px-6 text-xs font-bold text-violet-50 md:text-sm",
         bgColorClass,
         className,
       )}

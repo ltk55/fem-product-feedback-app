@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import iconSuggestions from "@/public/img/suggestions/icon-suggestions.svg";
 
+import Button from "../Button/Button";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 interface SortableListWithAddProps {
@@ -20,6 +22,8 @@ export default function SortableListWithAdd({
   setSortBy,
 }: SortableListWithAddProps): JSX.Element {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const router = useRouter();
 
   return (
     <div className="flex h-14 w-full min-w-[375px] items-center bg-slate-700 md:h-[72px] md:min-w-[689px] md:rounded-lg md:p-4">
@@ -43,6 +47,15 @@ export default function SortableListWithAdd({
         setIsOpen={setIsOpen}
         sortBy={sortBy}
         setSortBy={setSortBy}
+      />
+
+      <Button
+        colour="fuchsia"
+        label="+ Add Feedback"
+        onClick={() => {
+          router.push("/new-feedback");
+        }}
+        className="ml-auto mr-6 md:mr-0"
       />
     </div>
   );

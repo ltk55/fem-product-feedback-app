@@ -7,16 +7,17 @@ import NoFeedbackMessage from "@/components/NoFeedbackMessage/NoFeedbackMessage"
 import Sidebar from "@/components/Sidebar/Sidebar";
 import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWithAdd";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
-import data from "@/data/data.json";
 import useStore from "@/lib/store";
-import { type Category } from "@/types";
 
 export default function Home(): JSX.Element {
   const [sortBy, setSortBy] = useState<string>("mostUpvotes");
 
-  const selectedCategory = useStore((state) => state.selectedCategory);
+  const [productRequests, selectedCategory] = useStore((state) => [
+    state.productRequests,
+    state.selectedCategory,
+  ]);
 
-  const sortedSuggestions = data.productRequests
+  const sortedSuggestions = productRequests
     .filter(
       (sugg) =>
         selectedCategory.toLowerCase() === "all" ||
@@ -60,7 +61,7 @@ export default function Home(): JSX.Element {
                 id={sugg.id}
                 title={sugg.title}
                 description={sugg.description}
-                category={sugg.category as Category}
+                category={sugg.category}
                 upvoteCount={sugg.upvotes}
                 commentCount={sugg.comments?.length ?? 0}
               />
