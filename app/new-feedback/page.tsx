@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
@@ -12,6 +13,7 @@ import TextArea from "@/components/FormElements/TextArea";
 import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import { CATEGORY_OPTIONS } from "@/data/menuOptions";
 import useStore from "@/lib/store";
+import iconNewFeedback from "@/public/img/shared/icon-new-feedback.svg";
 import { type Category, type ProductRequest } from "@/types";
 
 interface Inputs {
@@ -58,15 +60,23 @@ export default function NewFeedbackPage(): JSX.Element {
 
   return (
     <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
-      <div className="flex h-10 items-center">
+      <div className="mb-10 flex h-10 items-center">
         <GoBackBtn colour="blue" />
       </div>
 
       <form
-        className="rounded-lg bg-white px-[42px] pb-10 pt-[53px]"
+        className="rounded-lg bg-white px-6 pb-10 md:px-[42px]"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="mb-10 text-2xl font-bold text-slate-600">
+        <Image
+          src={iconNewFeedback}
+          alt="icon add"
+          className="-mt-5"
+          width={40}
+          height={40}
+        />
+
+        <h1 className="mb-10 mt-5 text-lg font-bold text-slate-600 md:text-2xl">
           Create New Feedback
         </h1>
 

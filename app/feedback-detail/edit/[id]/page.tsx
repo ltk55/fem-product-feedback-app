@@ -97,7 +97,7 @@ export default function EditFeedbackPage({
       </div>
 
       <form
-        className="rounded-lg bg-white px-[42px] pb-10"
+        className="rounded-lg bg-white px-6 pb-10 md:px-[42px]"
         onSubmit={handleSubmit(onSubmit)}
       >
         <Image
