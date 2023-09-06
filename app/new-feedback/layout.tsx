@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Feedback Detail | Product Feedback App",
-  description: "Product Feedback App Feedback Detail Page",
+  title: "New Feedback | Product Feedback App",
+  description: "Product Feedback App New Feedback Page",
 };
 
-export default function FeedbackDetailLayout({
+export default function NewFeedbackLayout({
   children,
 }: {
   children: React.ReactNode;
