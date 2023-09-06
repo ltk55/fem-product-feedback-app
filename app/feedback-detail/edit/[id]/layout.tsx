@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "New Feedback | Product Feedback App",
-  description: "Product Feedback App New Feedback Page",
+  title: "Edit Feedback | Product Feedback App",
+  description: "Product Feedback App Edit Feedback  Page",
 };
 
 export default function NewFeedbackLayout({

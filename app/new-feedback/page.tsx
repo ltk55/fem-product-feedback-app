@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -12,20 +10,23 @@ import Input from "@/components/FormElements/Input";
 import Select from "@/components/FormElements/Select";
 import TextArea from "@/components/FormElements/TextArea";
 import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
+import { CATEGORY_OPTIONS } from "@/data/menuOptions";
 import useStore from "@/lib/store";
 import { type Category, type ProductRequest } from "@/types";
 
 interface Inputs {
   title: string;
-  category: string;
+  category: Category;
   detail: string;
 }
 
 export default function NewFeedbackPage(): JSX.Element {
   const router = useRouter();
 
-  const setProductRequests = useStore((state) => state.setProductRequests);
-  const productRequests = useStore((state) => state.productRequests);
+  const [productRequests, setProductRequests] = useStore((state) => [
+    state.productRequests,
+    state.setProductRequests,
+  ]);
 
   const {
     handleSubmit,
@@ -44,7 +45,7 @@ export default function NewFeedbackPage(): JSX.Element {
       id: uuid() as unknown as number,
       title: data.title,
       status: "suggestion",
-      category: data.category as Category,
+      category: data.category,
       upvotes: 0,
       description: data.detail,
       comments: [],
@@ -54,14 +55,6 @@ export default function NewFeedbackPage(): JSX.Element {
 
     router.push("/");
   };
-
-  const options: Array<{ label: string; value: Category }> = [
-    { label: "Feature", value: "feature" },
-    { label: "UI", value: "UI" },
-    { label: "UX", value: "UX" },
-    { label: "Enhancement", value: "enhancement" },
-    { label: "Bug", value: "bug" },
-  ];
 
   return (
     <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
@@ -113,7 +106,7 @@ export default function NewFeedbackPage(): JSX.Element {
           render={({ field: { onChange, ...restProps } }) => (
             <Select
               onChange={onChange}
-              options={options}
+              options={CATEGORY_OPTIONS}
               {...restProps}
               className="mb-6"
             />

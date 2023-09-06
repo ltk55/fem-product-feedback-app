@@ -16,11 +16,14 @@ interface SelectProps {
   options: Option[];
   onChange: (arg: string) => void;
   className?: string;
+  defaultOptionIndex?: number;
 }
 
 const Select = React.forwardRef<HTMLDivElement, SelectProps>(
-  ({ options, onChange, className }, ref) => {
-    const [selected, setSelected] = useState<Option>(options[0]);
+  ({ options, onChange, className, defaultOptionIndex }, ref) => {
+    const [selected, setSelected] = useState<Option>(
+      options[defaultOptionIndex ?? 0],
+    );
 
     function onChangeHandler(value: string): void {
       const foundOption = options.find((option) => option.value === value);
@@ -55,7 +58,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute w-full overflow-auto rounded-lg bg-white text-base shadow sm:text-sm">
+                <Listbox.Options className="absolute z-10 w-full overflow-auto rounded-lg bg-white text-base shadow sm:text-sm">
                   {options.map((opt, index) => (
                     <Listbox.Option
                       key={index}

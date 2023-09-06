@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 

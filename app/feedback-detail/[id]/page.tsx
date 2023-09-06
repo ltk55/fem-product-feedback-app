@@ -1,6 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import AddComment from "@/components/AddComment/AddComment";
+import Button from "@/components/Button/Button";
 import CommentBlock from "@/components/CommentBlock/CommentBlock";
 import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
@@ -13,14 +16,23 @@ interface PageProps {
 export default function FeedbackDetailPage({
   params: { id },
 }: PageProps): JSX.Element {
+  const router = useRouter();
+
   const [productRequests] = useStore((state) => [state.productRequests]);
 
   const feedback = productRequests.find((req) => req.id.toString() === id);
 
   return (
     <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
-      <div className="flex h-10 items-center">
+      <div className="flex h-10 items-center justify-between">
         <GoBackBtn colour="blue" />
+        <Button
+          colour="indigo"
+          label="Edit Feedback"
+          onClick={() => {
+            router.push(`./edit/${id}`);
+          }}
+        />
       </div>
       {feedback != null && (
         <>

@@ -49,9 +49,17 @@ function capitalizeString(string: string): string {
     .join(" ");
 }
 
+function getOptionIndexByValue<T>(
+  options: Array<{ label: string; value: T }>,
+  value: T,
+): number {
+  return options.findIndex((option) => option.value === value);
+}
+
 export {
   calculateStatusCounts,
   capitalizeString,
+  getOptionIndexByValue,
   getStatusBgColor,
   getStatusBorderColor,
 };
