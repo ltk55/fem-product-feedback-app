@@ -9,6 +9,8 @@ module.exports = {
     "next/core-web-vitals",
     "prettier",
     "plugin:tailwindcss/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
   ],
   overrides: [
     {
@@ -31,6 +33,7 @@ module.exports = {
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
+    "tailwindcss/no-custom-classname": "off",
     "@typescript-eslint/no-misused-promises": [
       "error",
       {
