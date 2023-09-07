@@ -4,7 +4,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import Image from "next/image";
 import React, { Fragment, useState } from "react";
 
-import iconArrowUp from "@/public/img/shared/icon-arrow-up.svg";
+import iconArrowDown from "@/public/img/shared/icon-arrow-down.svg";
 import iconCheck from "@/public/img/shared/icon-check.svg";
 
 interface Option {
@@ -39,16 +39,16 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           {({ open }) => (
             <div className="relative mt-1">
               <Listbox.Button
-                className={`relative mb-4 h-12 w-full cursor-pointer rounded bg-slate-50 px-6 py-2 text-left sm:text-sm ${
+                className={`relative mb-4 h-12 w-full cursor-pointer rounded bg-slate-50 px-6 py-2 text-left ${
                   open ? "outline outline-1 outline-indigo-600" : ""
                 }`}
               >
                 <span className="flex items-center justify-between truncate text-xs text-slate-600 md:text-base">
                   {selected.label}
                   <Image
-                    src={iconArrowUp}
-                    alt="hanburger-icon"
-                    className={`${open ? "rotate-180" : ""}`}
+                    src={iconArrowDown}
+                    alt={open ? "close select menu" : "open select menu"}
+                    className={open ? "rotate-180" : ""}
                   />
                 </span>
               </Listbox.Button>
