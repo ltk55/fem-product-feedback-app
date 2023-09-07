@@ -48,6 +48,7 @@ export type {
   Comment,
   Data,
   ProductRequest,
+  Reply,
   SortOption,
   Status,
   TrackedStatus,

@@ -8,6 +8,7 @@ import CommentBlock from "@/components/CommentBlock/CommentBlock";
 import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import useStore from "@/lib/store";
+import { type Reply } from "@/types";
 
 interface PageProps {
   params: { id: string };
@@ -18,9 +19,43 @@ export default function FeedbackDetailPage({
 }: PageProps): JSX.Element {
   const router = useRouter();
 
-  const [productRequests] = useStore((state) => [state.productRequests]);
+  const [productRequests, setProductRequests, currentUser] = useStore(
+    (state) => [
+      state.productRequests,
+      state.setProductRequests,
+      state.currentUser,
+    ],
+  );
 
   const feedback = productRequests.find((req) => req.id.toString() === id);
+
+  const handleAddReply = (
+    feedbackId: number,
+    commentId: string,
+    newReply: Reply,
+  ): void => {
+    const updatedProductRequests = productRequests.map((request) => {
+      if (request.id === feedbackId) {
+        const updatedComment = {
+          ...request,
+          comments: request.comments?.map((comment) => {
+            if (comment.id === commentId) {
+              return {
+                ...comment,
+                replies: [...(comment.replies ?? []), newReply],
+              };
+            }
+            return comment;
+          }),
+        };
+
+        return updatedComment;
+      }
+      return request;
+    });
+
+    setProductRequests(updatedProductRequests);
+  };
 
   return (
     <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
@@ -53,19 +88,23 @@ export default function FeedbackDetailPage({
             </h4>
 
             {feedback.comments?.map((comment, index) => {
+              const replyCount = comment.replies?.length ?? 0;
+              const isLastComment =
+                index === (feedback.comments?.length ?? 1) - 1;
+
               return (
                 <div key={index}>
                   {/* Comments */}
                   <CommentBlock
                     className={
-                      "border-b " +
-                      (feedback.comments != null &&
-                      index === feedback.comments.length - 1
-                        ? "border-b-0"
-                        : "")
+                      isLastComment || replyCount > 0 ? "" : "border-b"
                     }
                     content={comment.content}
-                    user={comment.user}
+                    commenter={comment.user}
+                    currentUser={currentUser}
+                    feedbackId={feedback.id}
+                    commentId={comment.id}
+                    onAddReply={handleAddReply}
                   />
 
                   {/* Replies */}
@@ -74,8 +113,12 @@ export default function FeedbackDetailPage({
                       className="border-l-[1px] border-slate-500/10 pl-6 md:ml-5"
                       key={key}
                       content={reply.content}
-                      user={reply.user}
+                      commenter={reply.user}
+                      currentUser={currentUser}
                       replyingTo={reply.replyingTo}
+                      feedbackId={feedback.id}
+                      commentId={comment.id}
+                      onAddReply={handleAddReply}
                     />
                   ))}
                 </div>
