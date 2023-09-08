@@ -29,6 +29,7 @@ export default function CategoryTag({
           hoverEffect === true ? "hover:bg-indigo-200" : "",
           "flex h-[30px] items-center justify-center rounded-lg p-4",
         )}
+        data-testid="category-tag-wrapper"
       >
         <div className="text-xs font-semibold">
           {capitalizeString(categoryName)}

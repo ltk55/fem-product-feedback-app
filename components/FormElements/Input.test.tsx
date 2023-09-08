@@ -5,10 +5,11 @@ import React from "react";
 
 import Input from "./Input";
 
+const onChange = jest.fn();
+
 describe("Input Component", () => {
   test("renders Input component with value and handles change", () => {
     const value = "Test Value";
-    const onChange = jest.fn();
 
     render(
       <Input value={value} onChange={onChange} className="custom-class" />,
@@ -31,7 +32,12 @@ describe("Input Component", () => {
     const errorMessage = "This is an error message";
 
     render(
-      <Input value="" errorMessage={errorMessage} className="custom-class" />,
+      <Input
+        value=""
+        errorMessage={errorMessage}
+        className="custom-class"
+        onChange={onChange}
+      />,
     );
 
     const errorMessageElement = screen.getByText(errorMessage);

@@ -8,7 +8,7 @@ export default function FieldLabel({
   className?: string;
 }): JSX.Element {
   return (
-    <div className={className}>
+    <div className={className} data-testid="field-label-wrapper">
       <label className="text-xs font-bold text-slate-600 md:text-sm">
         {title}
       </label>
