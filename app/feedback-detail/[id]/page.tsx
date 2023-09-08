@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 
 import AddComment from "@/components/AddComment/AddComment";
-import Button from "@/components/Button/Button";
+import Button from "@/components/Buttons/Button";
+import GoBackBtn from "@/components/Buttons/GoBackBtn";
 import CommentBlock from "@/components/CommentBlock/CommentBlock";
-import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import useStore from "@/lib/store";
 import { type Reply } from "@/types";

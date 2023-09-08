@@ -1,6 +1,6 @@
 "use client";
 
-import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
+import GoBackBtn from "@/components/Buttons/GoBackBtn";
 import RoadmapCard from "@/components/RoadmapCard/RoadmapCard";
 import useStore from "@/lib/store";
 import {

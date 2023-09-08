@@ -7,7 +7,7 @@ import { capitalizeString, getStatusBgColor } from "@/lib/utils";
 import iconComment from "@/public/img/shared/icon-comments.svg";
 import { type Category, type TrackedStatus } from "@/types";
 
-import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
+import UpvoteBtn from "../Buttons/UpvoteBtn";
 
 interface RoadmapCardProps {
   title: string;

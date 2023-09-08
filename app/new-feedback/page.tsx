@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
-import Button from "@/components/Button/Button";
+import Button from "@/components/Buttons/Button";
+import GoBackBtn from "@/components/Buttons/GoBackBtn";
 import FieldLabel from "@/components/FormElements/FieldLabel";
 import Input from "@/components/FormElements/Input";
 import Select from "@/components/FormElements/Select";
 import TextArea from "@/components/FormElements/TextArea";
-import GoBackBtn from "@/components/GoBackBtn/GoBackBtn";
 import { CATEGORY_OPTIONS } from "@/data/menuOptions";
 import useStore from "@/lib/store";
 import iconNewFeedback from "@/public/img/shared/icon-new-feedback.svg";

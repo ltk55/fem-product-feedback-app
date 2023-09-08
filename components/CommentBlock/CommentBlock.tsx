@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 import { type Reply, type User } from "@/types";
 
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 import TextArea from "../FormElements/TextArea";
 
 interface CommentBlockProps {

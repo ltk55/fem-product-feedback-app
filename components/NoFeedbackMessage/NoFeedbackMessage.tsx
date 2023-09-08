@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 import illustrationEmpty from "@/public/img/suggestions/illustration-empty.svg";
 
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 
 export default function NoFeedbackMessage(): JSX.Element {
   const router = useRouter();

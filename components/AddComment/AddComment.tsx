@@ -3,7 +3,7 @@
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
-import Button from "@/components/Button/Button";
+import Button from "@/components/Buttons/Button";
 import TextArea from "@/components/FormElements/TextArea";
 import useStore from "@/lib/store";
 import { type Comment } from "@/types";

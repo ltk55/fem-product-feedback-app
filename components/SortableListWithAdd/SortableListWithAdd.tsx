@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import iconSuggestions from "@/public/img/suggestions/icon-suggestions.svg";
 
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
 interface SortableListWithAddProps {

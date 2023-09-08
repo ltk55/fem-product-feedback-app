@@ -8,7 +8,7 @@ import CategoryTag from "@/components/CategoryTag/CategoryTag";
 import iconComment from "@/public/img/shared/icon-comments.svg";
 import { type Category } from "@/types";
 
-import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
+import UpvoteBtn from "../Buttons/UpvoteBtn";
 
 interface SuggestionCardProps {
   id: number;
