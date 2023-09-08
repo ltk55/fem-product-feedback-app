@@ -8,7 +8,7 @@ import GoBackBtn from "@/components/Buttons/GoBackBtn";
 import CommentBlock from "@/components/CommentBlock/CommentBlock";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import useStore from "@/lib/store";
-import { type Reply } from "@/types";
+import { type ProductRequest, type Reply } from "@/types";
 
 interface PageProps {
   params: { id: string };
@@ -28,6 +28,10 @@ export default function FeedbackDetailPage({
   );
 
   const feedback = productRequests.find((req) => req.id.toString() === id);
+
+  function handleAddComment(updatedProductRequests: ProductRequest[]): void {
+    setProductRequests(updatedProductRequests);
+  }
 
   const handleAddReply = (
     feedbackId: number,
@@ -128,7 +132,12 @@ export default function FeedbackDetailPage({
         </>
       )}
 
-      <AddComment feedbackId={id} />
+      <AddComment
+        feedbackId={id}
+        currentUser={currentUser}
+        productRequests={productRequests}
+        onAddComment={handleAddComment}
+      />
     </div>
   );
 }

@@ -1,38 +1,33 @@
-"use client";
-
 import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
 import Button from "@/components/Buttons/Button";
 import TextArea from "@/components/FormElements/TextArea";
-import useStore from "@/lib/store";
-import { type Comment } from "@/types";
+import { type Comment, type ProductRequest, type User } from "@/types";
 
-interface Inputs {
+interface Input {
   comment: string;
 }
 
 export default function AddComment({
   feedbackId,
+  currentUser,
+  productRequests,
+  onAddComment,
 }: {
   feedbackId: string;
+  currentUser: User;
+  productRequests: ProductRequest[];
+  onAddComment: (updatedProductRequests: ProductRequest[]) => void;
 }): JSX.Element {
-  const [currentUser, productRequests, setProductRequests] = useStore(
-    (state) => [
-      state.currentUser,
-      state.productRequests,
-      state.setProductRequests,
-    ],
-  );
-
   const {
     control,
     handleSubmit,
     watch,
     reset,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  } = useForm<Input>();
+  const onSubmit: SubmitHandler<Input> = async (data) => {
     const updatedProductRequests = productRequests.map((request) => {
       if (request.id.toString() === feedbackId) {
         const newComment: Comment = {
@@ -53,7 +48,8 @@ export default function AddComment({
       return request;
     });
 
-    setProductRequests(updatedProductRequests);
+    onAddComment(updatedProductRequests);
+
     reset();
   };
 
