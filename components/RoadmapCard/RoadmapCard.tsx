@@ -57,7 +57,7 @@ export default function RoadmapCard({
 
         <button className="flex items-center gap-1">
           <Image priority src={iconComment} alt="comment" />
-          <div className="min-w-[18px] text-center text-[13px] font-bold text-slate-600">
+          <div className="min-w-[18px] text-center text-xs font-bold text-slate-600">
             {commentCount}
           </div>
         </button>

@@ -15,7 +15,7 @@ export default function RoadmapWidget(): JSX.Element {
         <h3 className="text-lg font-bold text-slate-600">Roadmap</h3>
         <Link
           href="/roadmap"
-          className="text-[13px] font-semibold text-indigo-600 underline"
+          className="text-xs font-semibold text-indigo-600 underline"
         >
           View
         </Link>
