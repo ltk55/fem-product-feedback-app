@@ -11,7 +11,7 @@ import { type Category } from "@/types";
 import UpvoteBtn from "../Buttons/UpvoteBtn";
 
 interface SuggestionCardProps {
-  id: number;
+  feedbackId: number;
   title: string;
   description: string;
   category: Category;
@@ -20,7 +20,7 @@ interface SuggestionCardProps {
 }
 
 export default function SuggestionCard({
-  id,
+  feedbackId,
   title,
   description,
   category,
@@ -34,12 +34,12 @@ export default function SuggestionCard({
   return (
     <div className="flex flex-col rounded-lg bg-white p-6 md:w-full md:flex-row md:justify-between">
       <div className="hidden md:block">
-        <UpvoteBtn upvote={upvoteCount} responsive />
+        <UpvoteBtn upvote={upvoteCount} feedbackId={feedbackId} responsive />
       </div>
 
       <div className="w-full md:pl-10">
         <Link
-          href={`./feedback-detail/${id}`}
+          href={`./feedback-detail/${feedbackId}`}
           className={activeLink ? "" : "pointer-events-none"}
         >
           <h3 className="pb-[0.56rem] text-xs font-bold text-slate-600 md:text-lg">
@@ -55,7 +55,7 @@ export default function SuggestionCard({
       </div>
       <div className="flex justify-between">
         <div className="md:hidden">
-          <UpvoteBtn upvote={upvoteCount} />
+          <UpvoteBtn upvote={upvoteCount} feedbackId={feedbackId} />
         </div>
 
         <div className="flex items-center gap-1">

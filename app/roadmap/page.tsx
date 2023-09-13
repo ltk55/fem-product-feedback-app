@@ -112,6 +112,7 @@ export default function RoadmapPage(): JSX.Element {
             {filterRequestsByStatus(status).map((request) => (
               <RoadmapCard
                 key={request.id}
+                feedbackId={request.id}
                 title={request.title}
                 description={request.description}
                 category={request.category}

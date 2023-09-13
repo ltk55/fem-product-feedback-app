@@ -76,7 +76,7 @@ export default function FeedbackDetailPage({
       {feedback != null && (
         <>
           <SuggestionCard
-            id={feedback.id}
+            feedbackId={feedback.id}
             title={feedback.title}
             description={feedback.description}
             category={feedback.category}

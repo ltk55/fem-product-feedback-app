@@ -10,6 +10,7 @@ import { type Category, type TrackedStatus } from "@/types";
 import UpvoteBtn from "../Buttons/UpvoteBtn";
 
 interface RoadmapCardProps {
+  feedbackId: number;
   title: string;
   description: string;
   category: Category;
@@ -19,6 +20,7 @@ interface RoadmapCardProps {
 }
 
 export default function RoadmapCard({
+  feedbackId,
   title,
   description,
   category,
@@ -52,7 +54,7 @@ export default function RoadmapCard({
       </div>
       <div className="flex justify-between px-6">
         <div className="">
-          <UpvoteBtn upvote={upvoteCount} />
+          <UpvoteBtn upvote={upvoteCount} feedbackId={feedbackId} />
         </div>
 
         <button className="flex items-center gap-1">

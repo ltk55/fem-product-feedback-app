@@ -58,7 +58,7 @@ export default function Home(): JSX.Element {
             sortedSuggestions.map((sugg) => (
               <SuggestionCard
                 key={sugg.id}
-                id={sugg.id}
+                feedbackId={sugg.id}
                 title={sugg.title}
                 description={sugg.description}
                 category={sugg.category}

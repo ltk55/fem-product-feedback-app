@@ -18,6 +18,8 @@ interface Store {
   currentUser: User;
   productRequests: ProductRequest[];
   setProductRequests: (productRequests: ProductRequest[]) => void;
+  votedFeedbacksId: number[];
+  setVotedFeedbacksId: (votedFeedbacksId: number[]) => void;
 }
 
 const useStore = create<Store>()((set) => ({
@@ -37,6 +39,10 @@ const useStore = create<Store>()((set) => ({
   productRequests: data.productRequests as ProductRequest[],
   setProductRequests: (productRequests: ProductRequest[]) => {
     set(() => ({ productRequests }));
+  },
+  votedFeedbacksId: [],
+  setVotedFeedbacksId: (votedFeedbacksId: number[]) => {
+    set(() => ({ votedFeedbacksId }));
   },
 }));
 
