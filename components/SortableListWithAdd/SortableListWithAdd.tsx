@@ -1,13 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 import iconSuggestions from "@/public/img/suggestions/icon-suggestions.svg";
 
 import Button from "../Buttons/Button";
-import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import SortingMenu from "../SortingMenu/SortingMenu";
 
 interface SortableListWithAddProps {
   suggestionCount: number;
@@ -21,8 +18,6 @@ export default function SortableListWithAdd({
   sortBy,
   setSortBy,
 }: SortableListWithAddProps): JSX.Element {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const router = useRouter();
 
   return (
@@ -38,16 +33,7 @@ export default function SortableListWithAdd({
         {suggestionCount} Suggestions
       </h2>
 
-      <DropDownMenu
-        onClick={() => {
-          setIsOpen((open) => !open);
-        }}
-        currentSelection={sortBy}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
+      <SortingMenu onChange={setSortBy} />
 
       <Button
         colour="fuchsia"

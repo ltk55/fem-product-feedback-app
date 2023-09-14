@@ -4,26 +4,25 @@ import { Listbox, Transition } from "@headlessui/react";
 import Image from "next/image";
 import React, { Fragment, useState } from "react";
 
-import iconArrowDown from "@/public/img/shared/icon-arrow-down.svg";
+import iconArrowDownWhite from "@/public/img/shared/icon-arrow-down-white.svg";
 import iconCheck from "@/public/img/shared/icon-check.svg";
 
-interface Option {
-  label: string;
-  value: string;
-}
-
-interface SelectProps {
-  options: Option[];
+interface SortingMenuProps {
   onChange: (arg: string) => void;
   className?: string;
   defaultOptionIndex?: number;
 }
 
-const Select = React.forwardRef<HTMLDivElement, SelectProps>(
-  ({ options, onChange, className, defaultOptionIndex }, ref) => {
-    const [selected, setSelected] = useState<Option>(
-      options[defaultOptionIndex ?? 0],
-    );
+const options = [
+  { value: "mostUpvotes", label: "Most Upvotes" },
+  { value: "leastUpvotes", label: "Least Upvotes" },
+  { value: "mostComments", label: "Most Comments" },
+  { value: "leastComments", label: "Least Comments" },
+];
+
+const SortingMenu = React.forwardRef<HTMLDivElement, SortingMenuProps>(
+  ({ onChange, className, defaultOptionIndex }, ref) => {
+    const [selected, setSelected] = useState(options[defaultOptionIndex ?? 0]);
 
     function onChangeHandler(value: string): void {
       const foundOption = options.find((option) => option.value === value);
@@ -37,16 +36,17 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       <div className={className} ref={ref}>
         <Listbox value={selected.value} onChange={onChangeHandler}>
           {({ open }) => (
-            <div className="relative mt-1">
-              <Listbox.Button
-                className={`relative mb-4 h-12 w-full cursor-pointer rounded bg-slate-50 px-6 py-2 text-left ${
-                  open ? "outline outline-1 outline-indigo-600" : ""
-                }`}
-              >
-                <span className="flex items-center justify-between truncate text-xs text-slate-600 md:text-base">
-                  {selected.label}
+            <div className="relative">
+              <Listbox.Button className="relative h-12 w-full px-6 text-left">
+                <span className="flex items-center justify-between gap-2">
+                  <span className="text-xs text-violet-50 md:text-sm">
+                    Sort by :
+                  </span>{" "}
+                  <span className="truncate text-xs font-bold text-violet-50 md:text-sm">
+                    {selected.label}
+                  </span>
                   <Image
-                    src={iconArrowDown}
+                    src={iconArrowDownWhite}
                     alt={open ? "close select menu" : "open select menu"}
                     className={open ? "rotate-180" : ""}
                   />
@@ -58,7 +58,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-10 w-full overflow-auto rounded-lg bg-white text-base shadow sm:text-sm">
+                <Listbox.Options className="absolute z-10 mt-6 w-full overflow-auto rounded-lg bg-white text-base shadow sm:text-sm">
                   {options.map((opt, index) => (
                     <Listbox.Option
                       key={index}
@@ -95,6 +95,6 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   },
 );
 
-Select.displayName = "Select";
+SortingMenu.displayName = "SortingMenu";
 
-export default Select;
+export default SortingMenu;
