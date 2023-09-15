@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import Header from "@/components/Header/Header";
 import NoFeedbackMessage from "@/components/NoFeedbackMessage/NoFeedbackMessage";
-import Sidebar from "@/components/Sidebar/Sidebar";
 import SortableListWithAdd from "@/components/SortableListWithAdd/SortableListWithAdd";
 import SuggestionCard from "@/components/SuggestionCard/SuggestionCard";
 import useStore from "@/lib/store";
@@ -44,8 +43,6 @@ export default function Home(): JSX.Element {
   return (
     <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 xl:flex-row xl:gap-[30px]">
       <Header />
-
-      <Sidebar />
 
       <main className="flex min-h-screen flex-col items-center align-middle">
         <SortableListWithAdd

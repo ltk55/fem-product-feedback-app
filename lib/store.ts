@@ -11,8 +11,6 @@ import {
 interface Store {
   selectedCategory: Category;
   setSelectedCategory: (selectedCategory: Category) => void;
-  isSidebarOpen: boolean;
-  setIsSidebarOpen: (isOpen: boolean) => void;
   selectedStatus: TrackedStatus;
   setSelectedStatus: (selectedStatus: TrackedStatus) => void;
   currentUser: User;
@@ -26,10 +24,6 @@ const useStore = create<Store>()((set) => ({
   selectedCategory: "all",
   setSelectedCategory: (selectedCategory: Category) => {
     set(() => ({ selectedCategory }));
-  },
-  isSidebarOpen: false,
-  setIsSidebarOpen: (isOpen: boolean) => {
-    set({ isSidebarOpen: isOpen });
   },
   selectedStatus: "in-progress",
   setSelectedStatus: (selectedStatus: TrackedStatus) => {

@@ -1,25 +1,47 @@
-"use client";
+import { Dialog } from "@headlessui/react";
+import Image from "next/image";
 
-import useStore from "@/lib/store";
+import iconClose from "@/public/img/shared/mobile/icon-close.svg";
 
-import CategoryFilterWidget from "../CategoryFilterWidget/CategoryFilterWidget";
-import RoadmapWidget from "../RoadmapWidget/RoadmapWidget";
+interface SidebarProps {
+  children: React.ReactNode;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
 
-export default function Sidebar(): React.ReactNode {
-  const isSidebarOpen = useStore((state) => state.isSidebarOpen);
-
+export default function Sidebar({
+  children,
+  isOpen,
+  setIsOpen,
+}: SidebarProps): JSX.Element {
   return (
-    <div
-      className={`fixed inset-0 z-50 mt-[72px] bg-black/50 transition-opacity xl:hidden ${
-        isSidebarOpen
-          ? "pointer-events-auto opacity-100"
-          : "pointer-events-none opacity-0"
-      }`}
+    <Dialog
+      open={isOpen}
+      onClose={() => {
+        setIsOpen(false);
+      }}
+      className="fixed right-0 top-0 z-30 w-[271px] overflow-y-auto "
     >
-      <div className="absolute right-0 top-0 flex h-full w-[271px] flex-col gap-6 bg-[#f7f8fd] p-6 shadow-md">
-        <CategoryFilterWidget />
-        <RoadmapWidget />
+      <div className="flex flex-col">
+        <div className="flex h-[72px] items-center justify-end">
+          <Image
+            src={iconClose}
+            alt="close icon"
+            className="cursor-pointermd:hidden mr-6"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          />
+        </div>
+        <Dialog.Overlay className="fixed inset-0 top-[72px] z-40 bg-black/50" />
+        <div
+          className="z-50 flex h-screen w-full max-w-sm
+                         flex-col justify-between overflow-hidden bg-slate-50 p-6
+                         text-left align-middle shadow-xl"
+        >
+          <div>{children}</div>
+        </div>
       </div>
-    </div>
+    </Dialog>
   );
 }

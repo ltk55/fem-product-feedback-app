@@ -1,56 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
+import { useState } from "react";
 
 import CategoryFilterWidget from "@/components/CategoryFilterWidget/CategoryFilterWidget";
-import useStore from "@/lib/store";
-import iconClose from "@/public/img/shared/mobile/icon-close.svg";
 import iconHamburger from "@/public/img/shared/mobile/icon-hamburger.svg";
 
 import RoadmapWidget from "../RoadmapWidget/RoadmapWidget";
+import Sidebar from "../Sidebar/Sidebar";
 
-export default function Header(): React.ReactNode {
-  const [setIsSidebarOpen, isSidebarOpen] = useStore((state) => [
-    state.setIsSidebarOpen,
-    state.isSidebarOpen,
-  ]);
+export default function Header(): JSX.Element {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   return (
     <header className="flex justify-start gap-6 xl:flex-col">
-      <div className="flex h-[72px] w-full items-center justify-between bg-background-header-mobile bg-repeat-round px-6 text-white md:h-[178px] md:w-[223px] md:items-end md:rounded-[10px] md:bg-background-header-tablet md:pb-6 xl:h-[137px] xl:w-[255px] xl:bg-background-header-desktop">
-        <div>
+      <div className="flex h-[72px] w-full items-center justify-between bg-background-header-mobile bg-cover px-6 text-white md:h-[178px] md:w-[223px] md:items-end md:rounded-[10px] md:bg-background-header-tablet md:pb-6 xl:h-[137px] xl:w-[255px] xl:bg-background-header-desktop">
+        <section>
           <h1 className="text-base font-bold md:text-xl">Frontend Mentor</h1>
           <p className="text-xs font-medium opacity-75 md:text-base">
             Feedback Board
           </p>
-        </div>
+        </section>
+
         <Image
           src={iconHamburger}
-          alt="hanburger-icon"
-          className={twMerge(
-            "cursor-pointer md:hidden",
-            isSidebarOpen ? "hidden" : "block",
-          )}
+          alt="hamburger icon"
+          className={`cursor-pointer md:hidden ${
+            isSidebarOpen ? "hidden" : ""
+          }`}
           onClick={() => {
-            setIsSidebarOpen(true);
-          }}
-        />
-
-        <Image
-          src={iconClose}
-          alt="close-icon"
-          className={`md:hidden ${isSidebarOpen ? "block" : "hidden"}`}
-          onClick={() => {
-            setIsSidebarOpen(false);
+            setIsSidebarOpen((prev) => !prev);
+            console.log(isSidebarOpen);
           }}
         />
       </div>
 
-      <div className="hidden md:flex md:gap-6 xl:flex-col">
+      <section className="hidden md:flex md:gap-6 xl:flex-col">
         <CategoryFilterWidget />
         <RoadmapWidget />
-      </div>
+      </section>
+
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen}>
+        <section className="flex flex-col gap-6">
+          <CategoryFilterWidget />
+          <RoadmapWidget />
+        </section>
+      </Sidebar>
     </header>
   );
 }
