@@ -17,10 +17,11 @@ export default function Home(): JSX.Element {
   ]);
 
   const sortedSuggestions = productRequests
+    .filter((req) => req.status === "suggestion")
     .filter(
-      (sugg) =>
+      (req) =>
         selectedCategory.toLowerCase() === "all" ||
-        sugg.category.toLowerCase() === selectedCategory.toLowerCase(),
+        req.category.toLowerCase() === selectedCategory.toLowerCase(),
     )
     .sort((a, b) => {
       const aComments = a.comments?.length ?? 0;
