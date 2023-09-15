@@ -2,6 +2,8 @@ import "./globals.css";
 
 import { Jost } from "next/font/google";
 
+import HydrationZustand from "@/components/HydrationZustand/HydrationZustand";
+
 const inter = Jost({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,7 +18,9 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <HydrationZustand>{children}</HydrationZustand>
+      </body>
     </html>
   );
 }
