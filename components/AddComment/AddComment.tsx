@@ -78,7 +78,7 @@ export default function AddComment({
           />
         )}
       />
-      <div className="flex items-center justify-between">
+      <div className="mt-4 flex items-center justify-between">
         <div className="text-xs font-normal text-slate-500 md:text-base">
           {maxCommentLength - commentLength} Characters left
         </div>
