@@ -91,7 +91,7 @@ export default function EditFeedbackPage({
   };
 
   return (
-    <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
+    <div className="mx-6 my-20 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
       <div className="mb-10 flex h-10 items-center">
         <GoBackBtn colour="blue" />
       </div>

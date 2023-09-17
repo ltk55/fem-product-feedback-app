@@ -62,7 +62,7 @@ export default function FeedbackDetailPage({
   };
 
   return (
-    <div className="m-6 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
+    <div className="mx-6 my-20 flex flex-col gap-6 md:mx-auto md:max-w-[730px]">
       <div className="flex h-10 items-center justify-between">
         <GoBackBtn colour="blue" />
         <Button
