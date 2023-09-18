@@ -30,7 +30,6 @@ export default function Header(): JSX.Element {
           }`}
           onClick={() => {
             setIsSidebarOpen((prev) => !prev);
-            console.log(isSidebarOpen);
           }}
         />
       </div>

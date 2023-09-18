@@ -5,7 +5,7 @@ export default function GoBackBtn({
 }: {
   colour: "white" | "blue";
 }): JSX.Element {
-  const arrowColour = colour === "white" ? "#FFF" : "#647196";
+  const arrowColour = colour === "white" ? "#FFF" : "#4661E6";
   const textColour = colour === "white" ? "text-white" : "text-[#647196]";
 
   const router = useRouter();
