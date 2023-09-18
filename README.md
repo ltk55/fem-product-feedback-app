@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Product feedback app solution
 
-## Getting Started
+This is a solution to the [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Built with](#built-with)
+  - [Links](#links)
+  - [Screenshot](#screenshot)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### The challenge
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Users should be able to:
 
-## Learn More
+- View the optimal layout for the app depending on their device's screen size ✅
+- See hover states for all interactive elements on the page ✅
+- Create, read, update, and delete product feedback requests ✅
+- Receive form validations when trying to create/edit feedback requests ✅
+- Sort suggestions by most/least upvotes and most/least comments ✅
+- Filter suggestions by category ✅
+- Add comments and replies to a product feedback request ✅
+- Upvote product feedback requests ✅
+- **Bonus**: Keep track of any changes, even after refreshing the browser (`localStorage`) could be used for this if you're not building out a full-stack app) ✅
 
-To learn more about Next.js, take a look at the following resources:
+### Built with
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js 13](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [HeadlessUI](https://headlessui.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Links
 
-## Deploy on Vercel
+- Solution URL: [https://www.frontendmentor.io/solutions/product-feedback-app-nextjs-typescript-tailwindcss-SXBC5xAKIl](https://www.frontendmentor.io/solutions/product-feedback-app-nextjs-typescript-tailwindcss-SXBC5xAKIl)
+- Live Site URL: [https://product-feedback-app-pink.vercel.app/](https://product-feedback-app-pink.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Screenshot
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![home-desktop](./screenshots/home-desktop.png)
+![roadmap-desktop](./screenshots/roadmap-desktop.png)
+![feedback-desktop](./screenshots/feedback-desktop.png)
+
+![home-mobile](./screenshots/home-mobile.png)
+![roadmap-mobile](./screenshots/roadmap-mobile.png)
+![feedback-mobile](./screenshots/feedback-mobile.png)
