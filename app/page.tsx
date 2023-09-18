@@ -42,7 +42,7 @@ export default function Home(): JSX.Element {
     });
 
   return (
-    <div className="flex flex-col justify-center md:mt-[94px] md:gap-10 md:px-10 xl:flex-row xl:gap-[30px]">
+    <div className="flex flex-col justify-center md:mb-[129px] md:mt-[94px] md:gap-10 md:px-10 xl:flex-row xl:gap-[30px]">
       <Header />
 
       <main className="flex min-h-screen flex-col items-center align-middle">
