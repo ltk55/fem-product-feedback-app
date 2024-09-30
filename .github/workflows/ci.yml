@@ -34,4 +34,5 @@ jobs:
         run: npm run test
 
       - name: Build the project
-        run: npm run build
+        run: |
+          NODE_ENV=production npm run build
